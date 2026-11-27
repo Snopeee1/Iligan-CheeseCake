@@ -5,6 +5,7 @@ import { Logo } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { AdminSidebar, AdminTabs } from "@/components/AdminNav";
 import { PinRevealHost } from "@/components/AdminClient";
+import { Dust } from "@/components/motion";
 import { staffLogout } from "@/app/actions/admin";
 import { getStaff } from "@/lib/auth";
 
@@ -26,11 +27,12 @@ async function Who() {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-dvh bg-[#F6F1E8] lg:grid lg:grid-cols-[248px_minmax(0,1fr)]">
-      <aside className="glow-dark sticky top-0 hidden h-dvh flex-col gap-8 p-5 lg:flex">
-        <Logo href="/admin" />
-        <AdminSidebar />
-        <div className="mt-auto grid gap-4">
+    <div className="min-h-dvh bg-[#F6F1E8] lg:grid lg:grid-cols-[260px_minmax(0,1fr)]">
+      <aside className="glow-dark sticky top-0 hidden h-dvh flex-col gap-8 overflow-hidden p-5 lg:flex">
+        <Dust />
+        <div className="relative"><Logo href="/admin" /></div>
+        <div className="relative"><AdminSidebar /></div>
+        <div className="relative mt-auto grid gap-4">
           <Suspense fallback={null}>
             <Who />
           </Suspense>

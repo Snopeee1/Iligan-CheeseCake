@@ -17,14 +17,23 @@ export function MotionRoot() {
     let mo: MutationObserver | null = null;
     let fail = 0;
     let catchUp: (() => void) | null = null;
-    // Start after hydration so we never touch markup React is still adopting.
+    // Only touch elements React has already hydrated (streamed content can arrive later).
+    const hydrated = (el: Element) => Object.keys(el).some((k) => k.startsWith("__reactFiber"));
+    const reveal = (el: Element) => {
+      if (hydrated(el)) {
+        el.classList.add("in");
+        io?.unobserve(el);
+      } else {
+        window.setTimeout(() => reveal(el), 120);
+      }
+    };
+    // Start after load so we never touch markup React is still adopting.
     const start = () => {
       io = new IntersectionObserver(
         (entries) => {
           for (const en of entries) {
             if (!en.isIntersecting) continue;
-            en.target.classList.add("in");
-            io?.unobserve(en.target);
+            reveal(en.target);
           }
         },
         { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
@@ -41,14 +50,14 @@ export function MotionRoot() {
         requestAnimationFrame(() => {
           ticking = false;
           document.querySelectorAll("[data-reveal]:not(.in), .words:not(.in):not(.auto)").forEach((el) => {
-            if (el.getBoundingClientRect().top < innerHeight * 0.9) el.classList.add("in");
+            if (el.getBoundingClientRect().top < innerHeight * 0.9) reveal(el);
           });
         });
       };
       window.addEventListener("scroll", catchUp, { passive: true });
       fail = window.setTimeout(() => {
         document.querySelectorAll("[data-reveal]:not(.in), .words:not(.in)").forEach((el) => {
-          if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in");
+          if (el.getBoundingClientRect().top < innerHeight) reveal(el);
         });
       }, 2500);
     };

@@ -1,15 +1,31 @@
 import Link from "next/link";
 import { Icon, type IconName } from "./Icon";
+import { Dust } from "./motion";
 
 export function AdminTitle({ title, sub, children }: { title: string; sub?: string; children?: React.ReactNode }) {
   return (
-    <div className="flex flex-wrap items-end justify-between gap-4">
-      <div>
-        <h1 className="font-serif text-[34px] leading-10 font-medium md:text-[40px]">{title}</h1>
-        {sub ? <p className="text-sm text-muted">{sub}</p> : null}
+    <section className="glow-dark spotlight relative -mx-4 -mt-4 overflow-hidden px-6 py-7 md:-mx-8 md:-mt-8 md:px-10 md:py-9">
+      <span className="blob top-[-140px] right-[-60px] size-[360px] bg-gold/25" />
+      <Dust />
+      <div className="relative flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div className="eyebrow fade-up">ICH Admin</div>
+          <h1 className="fade-up mt-2 font-serif text-[36px] leading-10 font-medium text-cream md:text-[44px] md:leading-[48px]" style={{ animationDelay: "80ms" }}>
+            {title}
+          </h1>
+          {sub ? (
+            <p className="fade-up mt-1 max-w-2xl text-sm text-cream/65" style={{ animationDelay: "160ms" }}>
+              {sub}
+            </p>
+          ) : null}
+        </div>
+        {children ? (
+          <div className="fade-up flex flex-wrap gap-2" style={{ animationDelay: "240ms" }}>
+            {children}
+          </div>
+        ) : null}
       </div>
-      {children ? <div className="flex flex-wrap gap-2">{children}</div> : null}
-    </div>
+    </section>
   );
 }
 
@@ -24,7 +40,7 @@ export function Stat({ label, value, hint, icon, href, tone }: { label: string; 
       {hint ? <small className={`text-xs ${tone === "warn" ? "font-semibold text-gold-deep" : tone === "ok" ? "text-sage" : "text-muted"}`}>{hint}</small> : null}
     </>
   );
-  const cls = "panel grid gap-1 !p-5 transition";
+  const cls = "panel fade-up lift group grid gap-1 !p-5";
   return href ? (
     <Link href={href} className={`${cls} hover:border-gold`}>
       {body}
@@ -36,7 +52,7 @@ export function Stat({ label, value, hint, icon, href, tone }: { label: string; 
 
 export function Card({ title, action, children, className = "" }: { title?: string; action?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <section className={`panel !p-0 ${className}`}>
+    <section className={`panel fade-up !p-0 ${className}`}>
       {title ? (
         <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-2">
           <h2 className="font-serif text-xl font-semibold">{title}</h2>
