@@ -1,0 +1,124 @@
+{
+  "_source": "Foodpanda listing (foodpanda.ph/restaurant/ntnt/iligan-cheesecake-house), read 2026-11-26. Prices in PHP. Sir Angelo confirmed 2026-11-27 that dine-in prices are DIFFERENT from Foodpanda; the dine-in list is on the QR menu on his calling card. Replace these prices once we have it.",
+  "_note": "price null = not on Foodpanda (seen on Facebook only). 'from' = several sizes, sizes TBD.",
+  "categories": [
+    {
+      "id": "signature-cheesecakes",
+      "name": "Signature Cheesecakes",
+      "unit": "slice",
+      "items": [
+        { "name": "Basque Golden Creamy Cheesecake", "price": 515, "image": "hero-basque-golden-cheesecake", "description": "Premium cream cheese baked to a deep golden finish with a beautifully caramelized exterior." },
+        { "name": "Red Velvet Cheesecake", "price": 500, "image": null, "description": "Rich red velvet and ultra-creamy cheesecake with house-made whipped cream and white chocolate drizzle." },
+        { "name": "ICH Heaven Overload Cheesecake", "price": 475, "image": null, "description": "Dark chocolate and chocolate mousse layered with Oreo on a handcrafted Oreo crust." },
+        { "name": "ICH Nutella Cheesecake", "price": 475, "image": "menu-nutella-cheesecake", "description": "Nutella-infused cheesecake with pistachios and almonds on an Oreo crust." },
+        { "name": "ICH Lotus Biscoff Dream Cheesecake", "price": 490, "image": null, "description": "Velvety cream cheese base topped with Biscoff spread and crumbles." },
+        { "name": "Strawberry Cheesecake", "price": 470, "image": null, "description": "Strawberry cream cheese on a buttery crust with whipped cream and fresh strawberry." },
+        { "name": "Signature Blueberry Cheesecake", "price": 450, "image": null, "description": "Ultra-creamy cheesecake with signature blueberry jam, whipped cream and fresh blueberries." },
+        { "name": "Oreo Cheesecake", "price": 420, "image": "menu-oreo-cheesecake", "description": "Cream cheese blended with Oreo on an Oreo crust, crowned with a whole Oreo." },
+        { "name": "Chocolate Coffee Crumble Cheesecake", "price": 420, "image": null, "description": "Cream cheese and espresso finished with chocolate chips and dark chocolate drizzle." },
+        { "name": "Almond Heaven Chocolate Cake", "price": 355, "image": "menu-almond-heaven-chocolate-cake", "description": "Moist chocolate cake with dark chocolate ganache, almonds and golden flakes." },
+        { "name": "ICH Special Black Forest Cheesecake", "price": null, "image": null, "description": "Chocolate cheesecake with cherry notes. (Facebook only)" }
+      ],
+      "wholeCakes": "Whole cakes and 4-in-1 / 8-in-1 assorted boxes. Sir Angelo: from ₱3,800, now on promo at ₱3,550, lets you taste different flavours. TBD: which box/cake this price is for; other prices are on the calling-card QR menu."
+    },
+    {
+      "id": "pasta",
+      "name": "Pasta",
+      "items": [
+        { "name": "ICH Signature Four Cheese Lasagna", "price": 520, "image": null, "description": "Four premium cheeses, baked golden. Served with garlic baguette." },
+        { "name": "ICH Creamy Chicken Pesto", "price": 530, "image": null, "description": "Penne in pesto and Parmesan with pan-seared and grilled chicken. Served with butter garlic baguette." },
+        { "name": "ICH Creamy Chicken Carbonara", "price": 490, "image": "menu-creamy-chicken-carbonara", "description": "Fettuccine in creamy carbonara with chicken ham and Parmesan. Served with butter garlic baguette." },
+        { "name": "Filipino Beef Style Spaghetti", "price": 410, "image": null, "description": "Sweet Filipino-style sauce with seasoned beef, house-made meatballs and cheese." }
+      ]
+    },
+    {
+      "id": "meals",
+      "name": "Meals",
+      "groups": [
+        { "name": "Breakfast", "note": "Choice of fried, java or steamed rice + two eggs your way", "items": [
+          { "name": "Ranch Style Corned Beef", "price": 565 },
+          { "name": "Beef Hungarian Sausage", "price": 550 },
+          { "name": "ICH Premium Beef Tapa", "price": 565 }
+        ]},
+        { "name": "Main Course", "items": [
+          { "name": "Signature Prime Bulalo Steak", "price": 960 },
+          { "name": "ICH Golden Baked Salmon", "price": 910 },
+          { "name": "ICH Fire-Kissed Peri-Peri Roasted Half Chicken", "price": 835 },
+          { "name": "Creamy Tuscan Chicken", "price": 700, "image": "menu-creamy-tuscan-chicken" },
+          { "name": "Tonno Alla Griglia", "price": 630, "image": "menu-tonno-alla-griglia" },
+          { "name": "Ali di Pollo Piccanti (Chili-Sriracha Chicken)", "price": 555 },
+          { "name": "ICH Signature Honey Glazed Chicken", "price": 535 },
+          { "name": "ICH Signature Premium Beef Kare-Kare", "price": null },
+          { "name": "ICH Signature Spanish-Style Bangus", "price": null }
+        ]},
+        { "name": "Chef VIP Special Menu", "membersOnlyPrice": true, "note": "Sir Angelo 2026-11-27: prices on this menu are shown ONLY to signed-in Black Card members. Members get 25% off this menu. Exact dish names and prices are on the calling-card QR menu.", "items": [
+          { "name": "ICH Signature Tuscan Beef Spare Ribs with Balsamic", "price": null },
+          { "name": "Golden Tomahawk Steak", "price": null },
+          { "name": "Turkey", "price": null, "nameStatus": "TBD — full dish name" },
+          { "name": "Osso Buco", "price": null, "nameStatus": "TBD — full dish name" },
+          { "name": "Cacciatore", "price": null, "nameStatus": "TBD — full dish name" }
+        ]},
+        { "name": "Soup, Salad & Snacks", "items": [
+          { "name": "ICH Signature Truffle Mushroom Soup in a Bread Bowl", "price": null, "image": "menu-truffle-mushroom-soup" },
+          { "name": "ICH Signature Texas Chicken Garden Salad", "price": null },
+          { "name": "ICH Black Label 300 Double Patty Beef Burger", "price": 960 },
+          { "name": "ICH Signature Golden Luxe Fries", "price": 495 },
+          { "name": "Premium Beef Nachos", "price": 470 }
+        ]},
+        { "name": "Add-ons", "items": [
+          { "name": "Plain Rice", "price": 110 },
+          { "name": "Fried Rice", "price": 130 },
+          { "name": "Java Rice", "price": 130 }
+        ]}
+      ]
+    },
+    {
+      "id": "coffee-drinks",
+      "name": "Coffee & Drinks",
+      "groups": [
+        { "name": "Hot Coffee", "items": [
+          { "name": "Hot Caramel Macchiato", "price": 290 },
+          { "name": "Hot Spanish Latte", "price": 270 },
+          { "name": "Hot Cappuccino", "price": 215, "from": true },
+          { "name": "Hot Cafe Latte", "price": 215, "from": true },
+          { "name": "Hot Americano", "price": 190, "from": true }
+        ]},
+        { "name": "Iced Coffee", "items": [
+          { "name": "Iced Cafe Mocha", "price": 295 },
+          { "name": "Iced Salted Caramel", "price": 295 },
+          { "name": "Iced ICH Specialty Blend", "price": 295 },
+          { "name": "Iced White Choco Mocha", "price": 275 },
+          { "name": "Iced Caramel Macchiato", "price": 275 },
+          { "name": "Iced Spanish Latte", "price": 260 },
+          { "name": "Iced Cafe Latte", "price": 215, "from": true },
+          { "name": "Iced Americano", "price": 190, "from": true }
+        ]},
+        { "name": "Coffee Frappe", "items": [
+          { "name": "Cookies and Cream Coffee Frappe", "price": 320 },
+          { "name": "Java Mocha Frappe", "price": 315 },
+          { "name": "White Mocha Frappe", "price": 315 },
+          { "name": "Mochaccino Frappe", "price": 310 },
+          { "name": "Matcha Espresso Frappe", "price": 290 },
+          { "name": "ICH Coffee Frappe", "price": 255 }
+        ]},
+        { "name": "Cream Frappe", "items": [
+          { "name": "Strawberry Frappe", "price": 290 },
+          { "name": "Blueberry Cheesecake Frappe", "price": 270 },
+          { "name": "Mango Cheesecake Frappe", "price": 270 },
+          { "name": "Cookies and Cream Frappe", "price": 230, "from": true },
+          { "name": "Matcha Frappe", "price": 230, "from": true },
+          { "name": "Double Dutch Frappe", "price": 230, "from": true },
+          { "name": "Dark Chocolate Frappe", "price": 220, "from": true },
+          { "name": "Wintermelon Frappe", "price": 195, "from": true }
+        ]},
+        { "name": "Fruit Tea & Non-Coffee", "items": [
+          { "name": "Lychee Fruit Tea", "price": 195, "from": true },
+          { "name": "Blueberry Fruit Tea", "price": 195, "from": true },
+          { "name": "Passion Fruit Tea", "price": 180, "from": true },
+          { "name": "Hot Choco", "price": 355 },
+          { "name": "Hot Matcha Latte", "price": 195 }
+        ]}
+      ]
+    }
+  ]
+}

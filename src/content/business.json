@@ -1,0 +1,218 @@
+{
+  "_source": "Client message + Facebook + Google Maps (2026-11-26), and Sir Angelo's answers (2026-11-27, see client-answers-2026-11-27.md). 'TBD' = still to confirm.",
+  "name": "Iligan Cheesecake House",
+  "tagline": "Because Life is so Cheesy!",
+  "type": "Cheesecake café & restaurant",
+  "address": {
+    "street": "0002 Bauhina St. cor. Champaca St., San Miguel Village",
+    "barangay": "Pala-o",
+    "city": "Iligan City",
+    "province": "Lanao del Norte",
+    "country": "Philippines",
+    "landmark": "Former Qara's Villa, beside Lai-Lai Gardens, near Iligan Medical Center (Rotonda)",
+    "plusCode": "66JX+77 Iligan City",
+    "geo": {
+      "lat": 8.2307232,
+      "lng": 124.2482031
+    },
+    "googleMaps": "https://www.google.com/maps/place/Iligan+Cheesecake+House/data=!4m2!3m1!1s0x325577003415343f:0x2c328f2b08685856"
+  },
+  "hours": {
+    "value": "Tuesday–Sunday 11:30 AM – 9:30 PM, Monday rest day",
+    "status": "Confirmed by Sir Angelo as tentative. Sometimes open on special occasions, at management's discretion."
+  },
+  "phone": "(063) 302 3635",
+  "email": "iligancheesecakehouse@gmail.com",
+  "messenger": {
+    "url": "https://m.me/iligancheesecakehouse",
+    "status": "Confirmed",
+    "secondary": {
+      "who": "Sir Angelo",
+      "url": "TBD — on his calling card",
+      "why": "Backup for when the page admin is busy"
+    }
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/iligancheesecakehouse/",
+    "instagram": "https://www.instagram.com/iligancheesecakehouse/",
+    "tiktok": "https://www.tiktok.com/@iligancheesecakehouse"
+  },
+  "ordering": [
+    "Dine-in",
+    "Takeout",
+    "Grab",
+    "Maxim",
+    "Foodpanda"
+  ],
+  "foodpanda": "https://www.foodpanda.ph/restaurant/ntnt/iligan-cheesecake-house",
+  "digitalMenuOrQr": "On Sir Angelo's calling card (QR menu with updated dine-in prices). He wants the calling-card QR to open this website instead of the UTAK menu.",
+  "rating": {
+    "google": 4.4,
+    "googleCount": 42,
+    "foodpanda": 5.0,
+    "foodpandaCount": 11,
+    "asOf": "2026-11-26"
+  },
+  "priceRange": "₱500–1,500 per person (Google)",
+  "offer": {
+    "headline": "Exclusive Customer Offer",
+    "text": "Enjoy 5–10% DISCOUNT on selected",
+    "categories": [
+      "Signature Cheesecakes",
+      "Pasta",
+      "Meals",
+      "Coffee & Drinks"
+    ],
+    "rule": "Keep 'selected' and the 5–10% range exactly. No item-level discounts. Separate from the Black Card.",
+    "howItWorks": "Calling-card offer: when the customer comes back to dine in, they get 5–10% on selected items. Client wants this highlighted."
+  },
+  "complimentary": "Unlimited ICH Golden Honey Buns with Signature Lemon Cinnamon Butter — complimentary & unlimited with selected ICH Rice Meals, Pastas & Cheesecakes ONLY.",
+  "blackCard": {
+    "officialName": "Black Card Premium VIP Member",
+    "firstHolderAnnounced": "2026-02-13",
+    "membershipFee": 2200,
+    "consumable": {
+      "total": 1200,
+      "vouchers": 3,
+      "voucherValue": 400,
+      "rule": "Max one ₱400 voucher per dine-in; member chooses whether to deduct",
+      "pin": "Client wants a PIN before a voucher is deducted"
+    },
+    "discounts": {
+      "chefVipSpecialMenu": "25%",
+      "regularMenu": "10% — member plus up to 4 companions"
+    },
+    "minimumSpend": "None on any dine-in",
+    "complimentaryEveryDineIn": [
+      "Hot Americano",
+      "Cold Americano",
+      "Fruitea — Passion",
+      "Fruitea — Green Apple",
+      "Fruitea — Lychee"
+    ],
+    "birthdayMonth": "One free slice of cheesecake, any flavour, claim anytime in store",
+    "service": [
+      "Setting a Zone (TBD — meaning)",
+      "No-waiting policy: staff bring the order to the member"
+    ],
+    "vipRoomPrivilege": "₱2,000 less consumable on every VIP room",
+    "validity": "1 year from the date the form is filed",
+    "howToApply": "Anytime: fill out the form and pay ₱2,200 by cash, card or bank transfer. Client wants the form digital.",
+    "payment": [
+      "Cash",
+      "Card",
+      "Bank transfer"
+    ],
+    "fullPerks": "TBD — Sir Angelo will send",
+    "card": "Digital first (approved); physical later",
+    "seePricesOf": "Chef VIP Special Menu (members only)"
+  },
+  "vipRooms": [
+    {
+      "name": "VIP Room 1 — The Family Room",
+      "capacity": "Good for 8, max 10",
+      "consumable": 8000,
+      "blackCardConsumable": 6000
+    },
+    {
+      "name": "VIP Room 2 — The Corporate Room",
+      "capacity": "Good for 12, max 16",
+      "consumable": 12000,
+      "blackCardConsumable": 10000
+    },
+    {
+      "name": "VIP Room 3 — The Seminar Room",
+      "capacity": "26–30 guests",
+      "consumable": 20000,
+      "blackCardConsumable": 18000
+    }
+  ],
+  "functionHall": {
+    "note": "'Function Room' = the 3 VIP rooms (Family, Corporate, Seminar), not a separate space"
+  },
+  "packages": [
+    "Birthdays",
+    "Family gatherings",
+    "Celebrations"
+  ],
+  "contactPerson": {
+    "name": "Angelo M. Macalong",
+    "role": "Officer-in-Charge",
+    "publish": "Approved, with his phone number",
+    "phone": "TBD — on his calling card"
+  },
+  "reviews": [
+    {
+      "name": "Nathan",
+      "platform": "Google",
+      "stars": 5,
+      "date": "~Jun 2026 (shown as '5 months ago')",
+      "text": "Wow!  That's what I said after one bite of the delicious Creamy Tuscan Chicken.  Everything we ordered was exceptional.  The cheesecake was delicious too, and many choices.  This is a hidden gem.  We will be back again and again."
+    },
+    {
+      "name": "Riamaika",
+      "platform": "Google",
+      "stars": 5,
+      "date": "~May 2026 (shown as '6 months ago')",
+      "text": "Highly recommended! The place is so beautiful, you can really feel the premium vibe. When it comes to food, 10/10 everything we ordered was delicious, especially their frappes and cakes which are really 'high quality.' Even the kids loved their menu! The ambiance is also very relaxing, perfect for some downtime. Thumbs up to all the staff because they are very accommodating. We’ll definitely be back!"
+    },
+    {
+      "name": "Sittie",
+      "platform": "Google",
+      "stars": 5,
+      "date": "~2025 (shown as 'a year ago')",
+      "text": "My favorite is their Blueberry Cheesecake paired with Hot Salted Caramel. Great customer service!"
+    },
+    {
+      "name": "Jeff",
+      "platform": "Google",
+      "stars": 5,
+      "date": "~Aug 2026 (shown as '3 months ago')",
+      "text": "You know it’s good food when you keep coming back."
+    },
+    {
+      "name": "Gyle",
+      "platform": "Google",
+      "stars": 5,
+      "date": "~Nov 2026 (shown as '3 days ago')",
+      "text": "one of the best cheesecakes! must visit when in iligan!!"
+    },
+    {
+      "name": "Vien",
+      "platform": "Google",
+      "stars": 5,
+      "date": "~2024 (shown as '2 years ago')",
+      "text": "Amazing place with sophisticated atmosphere and yummy foods. Will visit again. Thanks for a wonderful service 👏🏻"
+    }
+  ],
+  "pricingNote": "Dine-in prices differ from Foodpanda. Use the calling-card QR menu once received.",
+  "porkFree": true,
+  "award": {
+    "name": "Asian Top Choice",
+    "year": 2026,
+    "exactTitle": "TBD",
+    "publish": true
+  },
+  "branches": {
+    "greenhills": "Part of ICH but not open yet — do NOT show on the website"
+  },
+  "vipRoomRules": {
+    "roomFee": "Waived when the consumable is reached within the first 4 hours",
+    "consumableCovers": "Food",
+    "extraHour": 1500,
+    "booking": [
+      "Facebook page",
+      "Messenger",
+      "Phone call"
+    ]
+  },
+  "exclusiveBooking": {
+    "name": "Main Dining + Seminar Room (exclusive)",
+    "capacity": "50–60 guests",
+    "consumable": 50000,
+    "promo": "₱40,000–45,000",
+    "blackCardRate": "TBD"
+  },
+  "reviewsPublish": "Approved by client",
+  "logo": "Client changed their logo — new file TBD. Current designs use the old logo."
+}
