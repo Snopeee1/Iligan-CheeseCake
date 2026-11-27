@@ -92,11 +92,12 @@ export function MotionRoot() {
 /* ------------------------------------------------------------------ */
 /* Count-up number (React-owned, animates once it scrolls into view)   */
 /* ------------------------------------------------------------------ */
-export function Count({ value, suffix = "" }: { value: string; suffix?: string }) {
+export function Count({ value, suffix = "", group = false }: { value: string; suffix?: string; group?: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
   const target = parseFloat(value);
   const dec = value.split(".")[1]?.length ?? 0;
-  const [shown, setShown] = useState(value);
+  const fmt = (n: number) => (group ? n.toLocaleString("en-PH", { minimumFractionDigits: dec, maximumFractionDigits: dec }) : n.toFixed(dec));
+  const [shown, setShown] = useState(() => fmt(target));
   useEffect(() => {
     const el = ref.current;
     if (!el || reduced()) return;
@@ -107,7 +108,7 @@ export function Count({ value, suffix = "" }: { value: string; suffix?: string }
       const t0 = performance.now();
       const step = (t: number) => {
         const k = Math.min(1, (t - t0) / 1600);
-        setShown((target * (1 - Math.pow(1 - k, 4))).toFixed(dec));
+        setShown(fmt(target * (1 - Math.pow(1 - k, 4))));
         if (k < 1) raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
@@ -117,7 +118,8 @@ export function Count({ value, suffix = "" }: { value: string; suffix?: string }
       io.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [target, dec]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [target, dec, group]);
   return (
     <span ref={ref} className="tabular-nums">
       {shown}

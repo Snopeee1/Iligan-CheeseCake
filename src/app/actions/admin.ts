@@ -293,3 +293,30 @@ export async function changeStaffPassword(_: Result, f: FormData): Promise<Resul
   await update("staff", s.id, { passwordHash: hashSecret(next) });
   return { ok: true, message: "Password changed." };
 }
+
+/* ---------- daily sales log ---------- */
+export async function saveSale(_: Result, f: FormData): Promise<Result> {
+  const s = await staff();
+  const date = str(f, "date", 10);
+  const today = new Date(Date.now() + 8 * 3600_000).toISOString().slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return { error: "Choose the date." };
+  if (date > today) return { error: "You can’t record sales for a future date." };
+  const num = (k: string) => {
+    const raw = str(f, k, 12).replace(/[,₱\s]/g, "");
+    if (raw === "") return 0;
+    const n = Number(raw);
+    return Number.isFinite(n) && n >= 0 && n <= 10_000_000 ? Math.round(n) : NaN;
+  };
+  const dineIn = num("dineIn"), takeout = num("takeout"), delivery = num("delivery");
+  if ([dineIn, takeout, delivery].some(Number.isNaN)) return { error: "Amounts must be whole pesos between 0 and 10,000,000." };
+  const ordersRaw = str(f, "orders", 6);
+  const orders = ordersRaw === "" ? null : Number(ordersRaw);
+  if (orders !== null && (!Number.isInteger(orders) || orders < 0)) return { error: "Orders must be a whole number." };
+  const notes = str(f, "notes", 300) || null;
+  const existing = await findOne("sales", { date });
+  const row = { date, dineIn, takeout, delivery, orders, notes, updatedBy: s.name, updatedAt: new Date().toISOString() };
+  if (existing) await update("sales", existing.id, row);
+  else await insert("sales", row);
+  refresh();
+  return { ok: true, message: `${existing ? "Updated" : "Saved"} ${date}: ₱${(dineIn + takeout + delivery).toLocaleString()} total.` };
+}

@@ -49,6 +49,8 @@ const P = {
   scan: "M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M4 12h16",
   leaf: "M5 19c0-8 6-14 15-14 0 9-6 15-14 15M5 19l7-7",
   award: "M12 3a6 6 0 1 0 0 12a6 6 0 0 0 0-12zM8.5 13.5L7 21l5-3 5 3-1.5-7.5",
+  chart: "M3 21h18M6 17v-6M11 17V6M16 17v-9M21 17v-4",
+  trend: "M3 17l6-6 4 4 8-8M15 7h6v6",
 } as const;
 
 export type IconName = keyof typeof P;

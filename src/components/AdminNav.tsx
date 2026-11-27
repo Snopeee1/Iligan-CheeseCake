@@ -7,6 +7,7 @@ import { Icon, type IconName } from "./Icon";
 export const ADMIN_ITEMS: { href: string; label: string; icon: IconName }[] = [
   { href: "/admin", label: "Dashboard", icon: "grid" },
   { href: "/admin/counter", label: "Counter", icon: "scan" },
+  { href: "/admin/analytics", label: "Sales & analytics", icon: "chart" },
   { href: "/admin/reservations", label: "Reservations", icon: "cal" },
   { href: "/admin/members", label: "Black Card", icon: "card" },
   { href: "/admin/inquiries", label: "Inquiries", icon: "inbox" },

@@ -84,6 +84,19 @@ export type Staff = { id: string; name: string; email: string; passwordHash: str
 
 export type MenuOverride = { key: string; price?: number | null; available: boolean; hidden: boolean; updatedAt?: string };
 
+export type Sale = {
+  id: string;
+  date: string; // YYYY-MM-DD
+  dineIn: number;
+  takeout: number;
+  delivery: number;
+  orders?: number | null;
+  notes?: string | null;
+  updatedBy?: string | null;
+  updatedAt?: string;
+  createdAt?: string;
+};
+
 export type Settings = {
   id: number;
   offerHeadline: string;
@@ -102,9 +115,10 @@ type Rows = {
   staff: Staff;
   menu_overrides: MenuOverride;
   settings: Settings;
+  sales: Sale;
 };
 export type Table = keyof Rows;
-const PK: Record<Table, string> = { members: "id", applications: "id", bookings: "id", inquiries: "id", activity: "id", staff: "id", menu_overrides: "key", settings: "id" };
+const PK: Record<Table, string> = { members: "id", applications: "id", bookings: "id", inquiries: "id", activity: "id", staff: "id", menu_overrides: "key", settings: "id", sales: "id" };
 
 export const DEFAULT_SETTINGS: Settings = {
   id: 1,
@@ -133,7 +147,7 @@ function supa() {
 /* ---------- File driver ---------- */
 const FILE = path.join(process.cwd(), "data", "db.json");
 type FileDB = { [K in Table]: Rows[K][] };
-const emptyFile = (): FileDB => ({ members: [], applications: [], bookings: [], inquiries: [], activity: [], staff: [], menu_overrides: [], settings: [DEFAULT_SETTINGS] });
+const emptyFile = (): FileDB => ({ members: [], applications: [], bookings: [], inquiries: [], activity: [], staff: [], menu_overrides: [], settings: [DEFAULT_SETTINGS], sales: [] });
 let queue: Promise<unknown> = Promise.resolve();
 async function loadFile(): Promise<FileDB> {
   try {
@@ -195,7 +209,7 @@ export async function get<K extends Table>(table: K, key: string | number): Prom
 export async function insert<K extends Table>(table: K, row: Omit<Rows[K], "id" | "createdAt"> & { id?: string; createdAt?: string }): Promise<Rows[K]> {
   const full = { ...row } as Record<string, unknown>;
   if (PK[table] === "id" && table !== "settings" && !full.id) full.id = randomUUID();
-  if (["members", "applications", "bookings", "inquiries", "staff"].includes(table) && !full.createdAt) full.createdAt = new Date().toISOString();
+  if (["members", "applications", "bookings", "inquiries", "staff", "sales"].includes(table) && !full.createdAt) full.createdAt = new Date().toISOString();
   if (usingSupabase()) {
     const { data, error } = await supa().from(table).insert(mapKeys(full, toSnake)).select().single();
     if (error) throw new Error(`DB insert ${table}: ${error.message}`);

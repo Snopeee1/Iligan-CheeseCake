@@ -139,8 +139,8 @@ function Hero() {
                 text="SIGNATURE · BASQUE · ₱515 / SLICE · "
                 className="size-[118px] text-gold-light lg:size-[150px]"
                 center={
-                  <span className="grid size-[86px] place-content-center rounded-full bg-[radial-gradient(circle_at_35%_30%,#E6C987,#C29A43)] text-center leading-tight shadow-[0_14px_30px_rgba(0,0,0,.45)] lg:size-[108px]">
-                    <small className="text-[10px] font-semibold tracking-wider uppercase">Signature</small>
+                  <span className="grid size-[86px] place-content-center rounded-full bg-[radial-gradient(circle_at_35%_30%,#F1D9A0,#C29A43)] text-center leading-tight text-espresso shadow-[0_14px_30px_rgba(0,0,0,.45)] ring-1 ring-espresso/20 ring-inset lg:size-[108px]">
+                    <small className="text-[10px] font-bold tracking-[.18em] text-espresso/75 uppercase">Signature</small>
                     <b className="font-serif text-xl lg:text-2xl">Basque</b>
                   </span>
                 }
@@ -169,7 +169,8 @@ function Ribbons() {
   const a = ["Signature Cheesecakes", "Artisan Pastas", "Signature Rice Entrées", "Coffee & Frappes", "Premier VIP Rooms", "Pork-free kitchen", "Black Card Members"];
   const b = ["Because Life is so Cheesy!", "Asian Top Choice 2026", "Dine-in · Takeout · Grab · Maxim · Foodpanda", "Open Tue–Sun · 11:30am–9:30pm", "Proudly Iligan"];
   return (
-    <div className="relative -rotate-1 overflow-hidden py-3">
+    <div className="overflow-hidden">
+    <div className="relative -mx-4 -rotate-1 py-3">
       <div className="bg-gold py-4 text-espresso shadow-[0_20px_40px_-20px_rgba(0,0,0,.5)]">
         <Marquee speed={40}>
           {a.map((t) => (
@@ -188,6 +189,7 @@ function Ribbons() {
           ))}
         </Marquee>
       </div>
+    </div>
     </div>
   );
 }
