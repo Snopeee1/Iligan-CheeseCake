@@ -32,7 +32,7 @@ export async function memberLogin(_: AuthState, f: FormData): Promise<AuthState>
 }
 
 export async function memberLogout() {
-  await endSession();
+  await endSession("member");
   redirect("/account/login");
 }
 

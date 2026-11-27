@@ -1,37 +1,46 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState } from "react";
 import { memberLogin, changePin, updateProfile, type AuthState } from "@/app/actions/member";
 import { Icon } from "./Icon";
+import { IconInput, SecretInput } from "./AuthShell";
 
 const init: AuthState = {};
 
 export function MemberLoginForm({ next }: { next?: string }) {
   const [state, action, pending] = useActionState(memberLogin, init);
-  const [show, setShow] = useState(false);
   return (
-    <form action={action} className="grid gap-4" noValidate>
+    <form action={action} className="grid gap-5" noValidate>
       <input type="hidden" name="next" value={next ?? "/account"} />
-      <label className="label" htmlFor="id">
-        Mobile number or card number
-        <input id="id" name="id" className="input" placeholder="0917 123 4567 or ICH-BC-0042" autoComplete="username" inputMode="text" required />
-      </label>
-      <label className="label" htmlFor="pin">
-        <span className="flex justify-between">
+      <div className="grid gap-2">
+        <label htmlFor="id" className="text-sm font-semibold">
+          Mobile number or card number
+        </label>
+        <IconInput icon="phone" id="id">
+          <input id="id" name="id" className="input !h-14 !pl-12" placeholder="0917 123 4567 or ICH-BC-0042" autoComplete="username" required />
+        </IconInput>
+      </div>
+      <div className="grid gap-2">
+        <label htmlFor="pin" className="text-sm font-semibold">
           4-digit PIN
-          <button type="button" className="text-xs font-semibold text-berry" onClick={() => setShow((s) => !s)}>
-            {show ? "Hide" : "Show"}
-          </button>
-        </span>
-        <input id="pin" name="pin" className="input tracking-[.4em]" type={show ? "text" : "password"} inputMode="numeric" pattern="\d{4,6}" maxLength={6} placeholder="••••" autoComplete="current-password" required />
-      </label>
+        </label>
+        <SecretInput id="pin" name="pin" placeholder="••••" autoComplete="current-password" numeric maxLength={6} />
+      </div>
       {state.error ? (
-        <p className="bad-msg" role="alert">
+        <p className="bad-msg fade-up" role="alert">
           <Icon name="x" size={18} /> {state.error}
         </p>
       ) : null}
-      <button className="btn btn-berry" disabled={pending}>
-        {pending ? "Signing in…" : "Sign in"} <Icon name="arrow" />
+      <button className="btn btn-berry !h-14 text-base" disabled={pending}>
+        {pending ? (
+          <>
+            <span className="size-4 animate-spin rounded-full border-2 border-cream/40 border-t-cream" /> Signing in…
+          </>
+        ) : (
+          <>
+            Open my Black Card <Icon name="arrow" />
+          </>
+        )}
       </button>
       <p className="text-center text-xs text-muted">Forgot your PIN? Ask our staff at the counter or message us on Messenger to reset it.</p>
     </form>

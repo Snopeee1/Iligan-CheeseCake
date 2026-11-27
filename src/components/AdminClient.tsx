@@ -23,6 +23,7 @@ import {
   type ScanMember,
 } from "@/app/actions/admin";
 import { Icon } from "./Icon";
+import { IconInput, SecretInput } from "./AuthShell";
 
 const init: Result = {};
 
@@ -75,19 +76,38 @@ function PinReveal({ data, onClose }: { data: Record<string, unknown>; onClose: 
 export function StaffLoginForm() {
   const [state, action, pending] = useActionState(staffLogin, init);
   return (
-    <form action={action} className="grid gap-4">
-      <label className="label" htmlFor="email">
-        Email
-        <input id="email" name="email" type="email" className="input" autoComplete="username" required />
-      </label>
-      <label className="label" htmlFor="password">
-        Password
-        <input id="password" name="password" type="password" className="input" autoComplete="current-password" required />
-      </label>
-      <Msg r={state} />
-      <button className="btn btn-berry" disabled={pending}>
-        {pending ? "Signing in…" : "Sign in"} <Icon name="arrow" />
+    <form action={action} className="grid gap-5" noValidate>
+      <div className="grid gap-2">
+        <label htmlFor="email" className="text-sm font-semibold">
+          Work email
+        </label>
+        <IconInput icon="mail" id="email">
+          <input id="email" name="email" type="email" className="input !h-14 !pl-12" placeholder="you@iligancheesecakehouse.com" autoComplete="username" required />
+        </IconInput>
+      </div>
+      <div className="grid gap-2">
+        <label htmlFor="password" className="text-sm font-semibold">
+          Password
+        </label>
+        <SecretInput id="password" name="password" placeholder="Your password" autoComplete="current-password" />
+      </div>
+      {state.error ? (
+        <p className="bad-msg fade-up" role="alert">
+          <Icon name="shield" size={18} /> {state.error}
+        </p>
+      ) : null}
+      <button className="btn btn-berry group !h-14 text-base" disabled={pending}>
+        {pending ? (
+          <>
+            <span className="size-4 animate-spin rounded-full border-2 border-cream/40 border-t-cream" /> Signing in…
+          </>
+        ) : (
+          <>
+            Sign in to admin <Icon name="arrow" />
+          </>
+        )}
       </button>
+      <p className="text-center text-xs text-muted">Forgot your password? Ask the owner to reset it from Website &amp; staff.</p>
     </form>
   );
 }

@@ -1,14 +1,13 @@
-/** Branded loading state shown while a page streams in. */
-export function RouteLoader({ dark = false, label = "Preparing something sweet…" }: { dark?: boolean; label?: string }) {
+import { IntroMark } from "./Intro";
+import { Dust } from "./motion";
+
+/** Loading state between pages — the same gold ring + ICH monogram as the opening screen. */
+export function RouteLoader({ label = "Because Life is so Cheesy!" }: { label?: string }) {
   return (
-    <div className={`grid min-h-[60vh] place-items-center ${dark ? "glow-dark" : ""}`} role="status" aria-live="polite">
-      <div className="grid justify-items-center gap-5">
-        <div className="relative grid place-items-center">
-          <div className="loader-slice" />
-          <span className="absolute font-serif text-sm font-semibold tracking-widest text-gold-deep">ICH</span>
-        </div>
-        <p className={`font-serif text-lg italic ${dark ? "text-gold-light" : "text-muted"}`}>{label}</p>
-      </div>
+    <div className="glow-dark relative grid min-h-[80vh] place-items-center overflow-hidden" role="status" aria-live="polite">
+      <Dust />
+      <IntroMark tagline={label} loop />
+      <span className="sr-only">Loading…</span>
     </div>
   );
 }

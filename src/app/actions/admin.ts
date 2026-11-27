@@ -45,7 +45,7 @@ export async function staffLogin(_: Result, f: FormData): Promise<Result> {
   redirect("/admin");
 }
 export async function staffLogout() {
-  await endSession();
+  await endSession("staff");
   redirect("/admin/login");
 }
 

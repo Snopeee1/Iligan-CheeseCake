@@ -6,7 +6,8 @@ import { cache } from "react";
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from "crypto";
 import { get, type Member, type Staff } from "./db";
 
-const COOKIE = "ich_session";
+/** Members and staff get separate cookies, so one browser can be signed in to both. */
+const COOKIE = { member: "ich_member", staff: "ich_staff" } as const;
 const MAX_AGE = 60 * 60 * 24 * 14; // 14 days
 
 function secret() {
@@ -57,7 +58,7 @@ function decode(token?: string): Session | null {
 }
 
 export async function startSession(sub: string, role: Session["role"]) {
-  (await cookies()).set(COOKIE, encode({ sub, role, exp: Date.now() + MAX_AGE * 1000 }), {
+  (await cookies()).set(COOKIE[role], encode({ sub, role, exp: Date.now() + MAX_AGE * 1000 }), {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -65,26 +66,27 @@ export async function startSession(sub: string, role: Session["role"]) {
     maxAge: MAX_AGE,
   });
 }
-export async function endSession() {
-  (await cookies()).delete(COOKIE);
+export async function endSession(role: Session["role"]) {
+  (await cookies()).delete(COOKIE[role]);
 }
 
-const getSession = cache(async () => {
-  const token = (await cookies()).get(COOKIE)?.value;
+const getSession = cache(async (role: Session["role"]) => {
+  const token = (await cookies()).get(COOKIE[role])?.value;
   await connection(); // session expiry depends on the current time: request-time only
-  return decode(token);
+  const s = decode(token);
+  return s && s.role === role ? s : null;
 });
 
 export const getMember = cache(async (): Promise<Member | null> => {
-  const s = await getSession();
-  if (!s || s.role !== "member") return null;
+  const s = await getSession("member");
+  if (!s) return null;
   const m = await get("members", s.sub);
   return m && m.status === "active" ? m : null;
 });
 
 export const getStaff = cache(async (): Promise<Staff | null> => {
-  const s = await getSession();
-  if (!s || s.role !== "staff") return null;
+  const s = await getSession("staff");
+  if (!s) return null;
   return get("staff", s.sub);
 });
 
