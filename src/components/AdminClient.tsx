@@ -24,6 +24,7 @@ import {
 } from "@/app/actions/admin";
 import { Icon } from "./Icon";
 import { IconInput, SecretInput } from "./AuthShell";
+import { QrScanner } from "./QrScanner";
 
 const init: Result = {};
 
@@ -231,15 +232,11 @@ export function AddMemberForm() {
 }
 
 /* ---------- counter ---------- */
-type Detector = { detect: (src: CanvasImageSource) => Promise<{ rawValue: string }[]> };
-
 export function CounterScanner() {
   const [code, setCode] = useState("");
   const [member, setMember] = useState<ScanMember | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [pending, start] = useTransition();
-  const [camera, setCamera] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [voucher, setVoucher] = useState(false);
   const [state, action, saving] = useActionState(async (prev: Result, f: FormData) => {
     const r = await recordVisit(prev, f);
@@ -250,11 +247,6 @@ export function CounterScanner() {
     }
     return r;
   }, init);
-  const canScan = useSyncExternalStore(
-    () => () => {},
-    () => "BarcodeDetector" in window,
-    () => false,
-  );
 
   const lookup = (v: string) =>
     start(async () => {
@@ -263,47 +255,6 @@ export function CounterScanner() {
       setMember(r.member ?? null);
       setVoucher(false);
     });
-
-  useEffect(() => {
-    if (!camera) return;
-    let stream: MediaStream | null = null;
-    let raf = 0;
-    let stopped = false;
-    const BD = (window as unknown as { BarcodeDetector: new (o: { formats: string[] }) => Detector }).BarcodeDetector;
-    const det = new BD({ formats: ["qr_code"] });
-    navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: "environment" } })
-      .then((s) => {
-        stream = s;
-        if (videoRef.current) {
-          videoRef.current.srcObject = s;
-          void videoRef.current.play();
-        }
-        const loop = async () => {
-          if (stopped || !videoRef.current) return;
-          try {
-            const found = await det.detect(videoRef.current);
-            if (found[0]?.rawValue) {
-              setCode(found[0].rawValue);
-              setCamera(false);
-              lookup(found[0].rawValue);
-              return;
-            }
-          } catch {}
-          raf = requestAnimationFrame(loop);
-        };
-        loop();
-      })
-      .catch(() => {
-        setErr("Camera not available. Type the card number instead.");
-        setCamera(false);
-      });
-    return () => {
-      stopped = true;
-      cancelAnimationFrame(raf);
-      stream?.getTracks().forEach((t) => t.stop());
-    };
-  }, [camera]);
 
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[420px_1fr]">
@@ -321,14 +272,13 @@ export function CounterScanner() {
             {pending ? "…" : "Find"}
           </button>
         </form>
-        {canScan ? (
-          <button type="button" className="btn btn-dark" onClick={() => setCamera((c) => !c)}>
-            <Icon name="scan" /> {camera ? "Stop camera" : "Scan member QR"}
-          </button>
-        ) : (
-          <p className="text-xs text-muted">Tip: on Chrome for Android you can scan the member’s QR with the camera. Here, type the card number or mobile.</p>
-        )}
-        {camera ? <video ref={videoRef} className="aspect-square w-full rounded-2xl bg-black object-cover" muted playsInline /> : null}
+        <QrScanner
+          onResult={(text) => {
+            const shown = text.startsWith("ICH1|") ? text.split("|")[1] : text;
+            setCode(shown);
+            lookup(text);
+          }}
+        />
         {err ? <p className="bad-msg">{err}</p> : null}
       </div>
 
@@ -344,7 +294,7 @@ export function CounterScanner() {
             </div>
             <div className="flex flex-wrap gap-2">
               {member.expired ? <span className="st bad">Expired</span> : member.status !== "active" ? <span className="st bad">Suspended</span> : <span className="st ok">Active</span>}
-              {member.verified ? <span className="st ok">Live QR verified</span> : <span className="st mute">Typed — check the member’s phone</span>}
+              {member.verified ? <span className="st ok">Live QR verified</span> : member.expiredQr ? <span className="st bad">QR expired — ask them to reopen their card</span> : <span className="st mute">Typed — check the member’s phone</span>}
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">

@@ -129,17 +129,17 @@ export function memberQrPayload(cardNo: string) {
   return `ICH1|${cardNo}|${qrToken(cardNo, Math.floor(Date.now() / WINDOW))}`;
 }
 /** Accepts a scanned QR payload or a typed card number. Returns the card number and whether the QR was live. */
-export function parseScan(input: string): { cardNo: string; verified: boolean } | null {
+export function parseScan(input: string): { cardNo: string; verified: boolean; fromQr: boolean } | null {
   const v = input.trim();
   const m = /^ICH1\|([A-Z0-9-]+)\|([A-Za-z0-9_-]{10})$/.exec(v);
   if (m) {
     const w = Math.floor(Date.now() / WINDOW);
     const ok = [w, w - 1].some((x) => qrToken(m[1], x) === m[2]);
-    return { cardNo: m[1], verified: ok };
+    return { cardNo: m[1], verified: ok, fromQr: true };
   }
   const card = v.toUpperCase().replace(/\s+/g, "");
   const digits = /^(?:ICH-?BC-?)?(\d{1,5})$/.exec(card);
-  if (digits) return { cardNo: `ICH-BC-${digits[1].padStart(4, "0")}`, verified: false };
+  if (digits) return { cardNo: `ICH-BC-${digits[1].padStart(4, "0")}`, verified: false, fromQr: false };
   return null;
 }
 

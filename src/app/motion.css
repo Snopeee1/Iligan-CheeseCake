@@ -135,6 +135,10 @@
   .scroll-cue::after { content: ""; position: absolute; left: 50%; top: 8px; width: 3px; height: 8px; margin-left: -1.5px; border-radius: 2px; background: var(--color-gold-light); animation: cue 1.8s ease-in-out infinite; }
   @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
 
+  /* QR scanner sweep */
+  .scanline { top: 0; animation: scanline 1.8s ease-in-out infinite alternate; }
+  @keyframes scanline { to { top: calc(100% - 2px); } }
+
   /* lightbox */
   .lightbox { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: rgba(10,8,7,.92); backdrop-filter: blur(6px); animation: fadein .3s; }
   @keyframes fadein { from { opacity: 0; } }

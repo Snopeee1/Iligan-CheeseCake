@@ -152,16 +152,18 @@ export async function setMemberStatus(memberId: string, status: "active" | "susp
 }
 
 /* ---------- counter: scan & redeem ---------- */
-export type ScanMember = { id: string; name: string; cardNo: string; mobile: string; vouchersLeft: number; expiresAt: string; status: string; visits: number; birthdayMonth: boolean; birthdayClaimed: boolean; verified: boolean; expired: boolean };
+export type ScanMember = { id: string; name: string; cardNo: string; mobile: string; vouchersLeft: number; expiresAt: string; status: string; visits: number; birthdayMonth: boolean; birthdayClaimed: boolean; verified: boolean; expiredQr: boolean; expired: boolean };
 
 export async function lookupCard(input: string): Promise<Result & { member?: ScanMember }> {
   await staff();
   const parsed = parseScan(input);
   let m: Member | null = null;
   let verified = false;
+  let expiredQr = false;
   if (parsed) {
     m = await findOne("members", { cardNo: parsed.cardNo });
     verified = parsed.verified;
+    expiredQr = parsed.fromQr && !parsed.verified;
   } else if (/^0?9\d{9}$/.test(input.replace(/\D/g, ""))) {
     m = await findOne("members", { mobile: normalizeMobile(input) });
   }
@@ -181,6 +183,7 @@ export async function lookupCard(input: string): Promise<Result & { member?: Sca
       birthdayMonth: m.birthday?.slice(0, 2) === month,
       birthdayClaimed: m.birthdaySliceClaimedYear === new Date().getFullYear(),
       verified,
+      expiredQr,
       expired: new Date(m.expiresAt).getTime() < Date.now(),
     },
   };
