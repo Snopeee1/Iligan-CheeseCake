@@ -36,10 +36,12 @@ export function Words({ parts, as: Tag = "h2", className = "", delay = 0, auto =
 }
 
 /** Rotating circular text badge. */
-export function SpinBadge({ text, center, className = "" }: { text: string; center: React.ReactNode; className?: string }) {
+export function SpinBadge({ text, center, className = "", solid = false }: { text: string; center: React.ReactNode; className?: string; solid?: boolean }) {
   const id = useId().replace(/:/g, "");
+  // `relative` would override a caller's `absolute` placement, so only add it when not positioned
+  const pos = /\b(absolute|fixed)\b/.test(className) ? "" : "relative";
   return (
-    <div className={`relative grid place-items-center ${className}`}>
+    <div className={`${pos} grid place-items-center ${solid ? "rounded-full bg-espresso/80 shadow-[0_10px_30px_rgba(0,0,0,.45)] ring-1 ring-gold/40 backdrop-blur-sm" : ""} ${className}`}>
       <svg viewBox="0 0 200 200" className="spin-slow absolute inset-0 size-full" aria-hidden="true">
         <defs>
           <path id={`c${id}`} d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />

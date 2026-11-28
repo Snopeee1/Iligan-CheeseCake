@@ -235,10 +235,10 @@ async function MenuPreview() {
           <Tilt max={5} className="rounded-3xl lg:col-span-2 lg:row-span-2" style={{}}>
             <article data-reveal="clip" className="group relative min-h-[440px] overflow-hidden rounded-3xl text-cream shadow-[var(--shadow-deep)] lg:h-full lg:min-h-[640px]">
               <Photo name="hero-basque-golden-cheesecake" alt="Basque Golden Creamy Cheesecake" sizes="(max-width:1024px) 100vw, 620px" className="zoom-img !absolute inset-0" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,0)_35%,rgba(36,22,15,.92)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,.25)_0%,rgba(36,22,15,.1)_22%,rgba(36,22,15,.7)_48%,rgba(36,22,15,.96)_100%)] lg:bg-[linear-gradient(180deg,rgba(36,22,15,.2)_0%,transparent_22%,transparent_45%,rgba(36,22,15,.75)_68%,rgba(36,22,15,.96)_100%)]" />
               <span className="pill absolute top-6 left-6">◆ Signature of the House</span>
-              <SpinBadge text="BEST SELLER · HOUSE FAVOURITE · " className="absolute top-5 right-5 size-[104px] text-gold-light" center={<Icon name="star" size={26} className="text-gold" />} />
-              <div className="absolute inset-x-6 bottom-6 grid gap-3 lg:inset-x-9 lg:bottom-9">
+              <SpinBadge solid text="BEST SELLER · HOUSE FAVOURITE · " className="absolute top-4 right-4 size-[96px] text-gold-light md:top-5 md:right-5 md:size-[108px]" center={<Icon name="star" size={26} className="text-gold" />} />
+              <div className="on-photo absolute inset-x-6 bottom-6 grid gap-3 lg:inset-x-9 lg:bottom-9">
                 <div className="eyebrow !text-gold-light">Signature Cheesecake</div>
                 <h3 className="font-serif text-[34px] leading-[38px] font-medium lg:text-[44px] lg:leading-[48px]">Basque Golden Creamy Cheesecake</h3>
                 <p className="max-w-[440px] opacity-85">Premium cream cheese baked to a deep golden finish, creating a beautifully caramelized exterior that melts in your mouth.</p>
@@ -430,10 +430,10 @@ function Venues() {
           <article data-reveal="left" className="gilt flex flex-col overflow-hidden rounded-3xl text-cream">
             <div className="group relative h-[220px] overflow-hidden md:h-[360px]">
               <Photo name="vip-room-family-01" alt="VIP Family Room with round table and arched mirror" sizes="(max-width:1024px) 100vw, 700px" className="zoom-img !absolute inset-0" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(36,22,15,.85))]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,.15)_0%,transparent_25%,rgba(36,22,15,.6)_55%,rgba(36,22,15,.95))]" />
               <span className="pill absolute top-5 left-5">◆ Premier VIP Rooms</span>
-              <div className="absolute bottom-[22px] left-7">
-                <div className="eyebrow !text-gold-light">3 private rooms · 8–30 guests · room fee waived</div>
+              <div className="on-photo absolute right-6 bottom-[22px] left-6 md:left-7">
+                <div className="eyebrow !text-gold-light">3 private rooms · 8–30 guests · no room fee</div>
                 <h3 className="h3">Your own room at ICH</h3>
               </div>
             </div>
@@ -464,9 +464,9 @@ function Venues() {
             <Tilt max={5} className="rounded-3xl">
               <article data-reveal="right" className="group relative h-full min-h-[380px] overflow-hidden rounded-3xl text-cream shadow-[var(--shadow-deep)] lg:min-h-[430px]">
                 <Photo name="interior-dining-hall-01" alt="Main dining hall" sizes="(max-width:1024px) 100vw, 520px" className="zoom-img !absolute inset-0" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,.1)_20%,rgba(36,22,15,.92))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,.15)_0%,rgba(36,22,15,.25)_25%,rgba(36,22,15,.85)_55%,rgba(36,22,15,.97))]" />
                 <span className="pill absolute top-5 left-5">◆ Book the whole place</span>
-                <div className="absolute inset-x-7 bottom-7 grid gap-2.5">
+                <div className="on-photo absolute inset-x-6 bottom-7 grid gap-2.5 md:inset-x-7">
                   <div className="eyebrow !text-gold-light">50–60 guests</div>
                   <h3 className="h3">Main Dining + Seminar Room</h3>
                   <p className="text-[15px] opacity-85">Book the whole house for bigger parties and corporate events. ₱50,000 to spend on food and drinks — now on promo at ₱40,000–45,000.</p>
