@@ -155,7 +155,7 @@ function CakeCard({ it }: { it: LiveItem }) {
           </div>
         )}
         {BADGE[it.name] ? <span className="pill light absolute top-3 left-3 !text-[10px]">{BADGE[it.name]}</span> : null}
-        <span className={`absolute right-3 -bottom-4 rounded-xl px-3 py-1.5 text-[15px] font-bold shadow-[0_10px_20px_-8px_rgba(142,27,46,.7)] ${it.price && it.available ? "bg-berry text-cream" : "bg-white text-berry"}`}>
+        <span className={`absolute right-3 -bottom-4 rounded-xl px-3 py-1.5 text-[15px] font-bold shadow-[0_10px_20px_-8px_rgba(143,58,34,.7)] ${it.price && it.available ? "bg-berry text-cream" : "bg-white text-berry"}`}>
           <PriceTag it={it} unit="/slice" />
         </span>
       </div>

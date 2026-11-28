@@ -52,7 +52,7 @@ async function DashboardInner() {
       {/* HERO BAND */}
       <section className="glow-dark spotlight relative overflow-hidden">
         <span className="blob top-[-160px] right-[-100px] size-[460px] bg-gold/30" />
-        <span className="blob bottom-[-180px] left-[-120px] size-[420px] bg-berry/45" style={{ animationDelay: "-6s" }} />
+        <span className="blob bottom-[-180px] left-[-120px] size-[420px] bg-sage/45" style={{ animationDelay: "-6s" }} />
         <Dust />
         <div className="wrap relative grid items-center gap-10 py-10 md:py-14 lg:grid-cols-[1fr_440px]">
           <div>
@@ -153,7 +153,7 @@ async function DashboardInner() {
                   </b>
                   <span className="block text-sm text-muted">left · valid until {fmtDate(m.expiresAt)}</span>
                 </div>
-                <Meter value={daysLeft} max={totalDays} color="linear-gradient(90deg,#8E1B2E,#C9A24B)" />
+                <Meter value={daysLeft} max={totalDays} color="linear-gradient(90deg,#8f3a22,#C9A24B)" />
                 <div className="grid grid-cols-3 gap-2 text-center text-xs">
                   {[
                     ["10%", "regular · you + 4"],

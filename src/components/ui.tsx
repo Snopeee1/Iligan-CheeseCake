@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PHOTO_CROP } from "@/lib/content";
 import { Icon } from "./Icon";
 import { Dust } from "./motion";
+import { FairyLights } from "./decor";
 
 export function Photo({ name, alt = "", className = "", sizes = "100vw", eager = false, crop }: { name: string; alt?: string; className?: string; sizes?: string; eager?: boolean; crop?: string }) {
   const c = crop ?? PHOTO_CROP[name];
@@ -75,7 +76,8 @@ export function PageHero({ crumb, eyebrow, title, lead, children, aside }: { cru
   return (
     <section className="glow-dark spotlight relative overflow-hidden">
       <span className="blob top-[-140px] right-[-100px] size-[460px] bg-gold/35" />
-      <span className="blob bottom-[-160px] left-[-120px] size-[420px] bg-berry/50" style={{ animationDelay: "-5s" }} />
+      <span className="blob bottom-[-160px] left-[-120px] size-[420px] bg-sage/45" style={{ animationDelay: "-5s" }} />
+      <FairyLights drape className="absolute inset-x-0 top-0 opacity-90" swags={5} />
       <Dust />
       <div className="wrap relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_1fr]">
         <div className="fade-up">

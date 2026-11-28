@@ -451,8 +451,8 @@ export function CallingCardQr({ url }: { url: string }) {
   const [svg, setSvg] = useState("");
   const [png, setPng] = useState("");
   useEffect(() => {
-    QRCode.toString(url, { type: "svg", margin: 1, errorCorrectionLevel: "H", color: { dark: "#14110F", light: "#FFFFFF" } }).then(setSvg);
-    QRCode.toDataURL(url, { margin: 2, width: 1200, errorCorrectionLevel: "H", color: { dark: "#14110F", light: "#FFFFFF" } }).then(setPng);
+    QRCode.toString(url, { type: "svg", margin: 1, errorCorrectionLevel: "H", color: { dark: "#24160f", light: "#FFFFFF" } }).then(setSvg);
+    QRCode.toDataURL(url, { margin: 2, width: 1200, errorCorrectionLevel: "H", color: { dark: "#24160f", light: "#FFFFFF" } }).then(setPng);
   }, [url]);
   return (
     <div className="grid gap-4">

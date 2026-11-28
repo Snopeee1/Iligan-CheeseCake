@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: { type: "website", siteName: "Iligan Cheesecake House", images: ["/images/hero-basque-golden-cheesecake.webp"] },
 };
 
-export const viewport: Viewport = { themeColor: "#14110F" };
+export const viewport: Viewport = { themeColor: "#24160f" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

@@ -36,7 +36,7 @@ export function GalleryLightbox({ items }: { items: GItem[] }) {
             onClick={() => setI(n)}
             data-reveal="clip"
             style={{ "--d": `${n * 120}ms` } as React.CSSProperties}
-            className={`group relative overflow-hidden rounded-[18px] text-left ${x.cls ?? ""}`}
+            className={`gilt group relative overflow-hidden rounded-[18px] text-left ${x.cls ?? ""}`}
             aria-label={`Open photo: ${x.cap}`}
           >
             <Photo name={x.img} alt={x.cap} sizes="(max-width:768px) 50vw, 500px" className="zoom-img !absolute inset-0" />

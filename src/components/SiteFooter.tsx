@@ -2,11 +2,13 @@ import Link from "next/link";
 import { LINKS } from "@/lib/content";
 import { Icon } from "./Icon";
 import { Logo } from "./ui";
+import { FairyLights } from "./decor";
 
 export function SiteFooter() {
   return (
     <>
       <footer className="glow-dark spotlight relative overflow-hidden pb-28 md:pb-10">
+        <FairyLights className="absolute inset-x-0 top-0" swags={7} sag={20} />
         <div className="wrap">
           <div className="flex flex-col items-start justify-between gap-8 border-b border-gold/20 pt-14 pb-10 md:flex-row md:items-end md:pt-[72px] md:pb-14">
             <p data-reveal="up" className="gold-text font-serif text-[46px] leading-[54px] font-medium tracking-tight italic md:text-[72px] md:leading-[80px]">

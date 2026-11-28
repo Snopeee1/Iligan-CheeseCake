@@ -8,7 +8,7 @@ export function IntroMark({ tagline = "Because Life is so Cheesy!", loop = false
         <circle cx="75" cy="75" r="70" fill="none" stroke="rgba(201,162,75,.18)" strokeWidth="1" />
         <circle className="ring" cx="75" cy="75" r="70" fill="none" stroke="#C9A24B" strokeWidth="1.5" strokeLinecap="round" transform="rotate(-90 75 75)" />
         <g className="mono" style={{ transformOrigin: "75px 75px" }}>
-          <circle cx="75" cy="75" r="56" fill="#14110F" stroke="rgba(201,162,75,.45)" />
+          <circle cx="75" cy="75" r="56" fill="#24160f" stroke="rgba(201,162,75,.45)" />
           <text x="75" y="87" textAnchor="middle" fontFamily="var(--font-cormorant), Georgia, serif" fontSize="34" fontWeight="600" fill="#E6C987" letterSpacing="3">
             ICH
           </text>

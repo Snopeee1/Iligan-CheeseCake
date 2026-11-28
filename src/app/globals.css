@@ -2,20 +2,20 @@
 
 /* ICH design tokens — same values as the approved Figma "ICH Tokens" */
 @theme {
-  --color-espresso: #14110f;
-  --color-espresso-2: #1e1916;
-  --color-ink: #2a221d;
-  --color-muted: #6e625a;
-  --color-cream: #faf5ec;
-  --color-cheesecake: #f1e4c8;
+  --color-espresso: #24160f;
+  --color-espresso-2: #32201a;
+  --color-ink: #3b281e;
+  --color-muted: #6f5a48;
+  --color-cream: #f7efdf;
+  --color-cheesecake: #eedcb8;
   --color-crust: #c68b4e;
   --color-gold: #c9a24b;
   --color-gold-light: #e6c987;
   --color-gold-deep: #8a6720;
-  --color-berry: #8e1b2e;
-  --color-berry-soft: #b8324a;
-  --color-sage: #55624a;
-  --color-line: #e4d8c3;
+  --color-berry: #8f3a22;
+  --color-berry-soft: #a84a2f;
+  --color-sage: #4d6b3c;
+  --color-line: #e3d0ad;
   --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-dm), system-ui, -apple-system, "Segoe UI", sans-serif;
   --shadow-soft: 0 18px 40px -16px rgba(42, 34, 29, 0.22);
@@ -39,7 +39,10 @@
   html { scroll-behavior: smooth; overflow-x: clip; }
   body {
     overflow-x: clip;
-    background: var(--color-cream);
+    /* faint plaster/stone texture, like the café's textured cream walls */
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .55  0 0 0 0 .42  0 0 0 0 .24  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      var(--color-cream);
     color: var(--color-ink);
     font: 16px/1.625 var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -52,13 +55,32 @@
   .wrap { max-width: calc(var(--max) + var(--pad) * 2); margin-inline: auto; padding-inline: var(--pad); }
   .sec { padding-block: var(--sec); position: relative; }
   .dark { background: var(--color-espresso); color: var(--color-cream); }
+  /* dark sections: walnut wood lit by warm lamps and fairy lights */
   .glow-dark {
     background:
-      radial-gradient(900px 500px at 85% 0%, rgba(201, 162, 75, 0.16), transparent 60%),
-      radial-gradient(700px 400px at 0% 100%, rgba(142, 27, 46, 0.22), transparent 60%),
+      radial-gradient(900px 520px at 85% 0%, rgba(240, 190, 90, 0.2), transparent 60%),
+      radial-gradient(700px 420px at 0% 100%, rgba(77, 107, 60, 0.22), transparent 62%),
+      radial-gradient(600px 360px at 40% 110%, rgba(143, 58, 34, 0.18), transparent 60%),
+      repeating-linear-gradient(92deg, rgba(255, 220, 170, 0.018) 0 2px, transparent 2px 9px),
       var(--color-espresso);
     color: var(--color-cream);
   }
+
+  /* gilt picture frame, like the gold-framed paintings on the café walls */
+  .gilt {
+    border: 5px solid transparent;
+    background: linear-gradient(var(--color-espresso), var(--color-espresso)) padding-box,
+      linear-gradient(135deg, #f1d58f, #a77b2c 30%, #f6e2a6 50%, #8a6720 75%, #e6c987) border-box;
+    box-shadow: inset 0 0 0 2px rgba(36, 22, 15, 0.55), 0 22px 44px -20px rgba(36, 22, 15, 0.6);
+  }
+  /* small ivy leaf used in section ornaments */
+  .leaf { display: inline-block; width: 9px; height: 9px; background: var(--color-sage); border-radius: 0 100% 0 100%; transform: rotate(-45deg); }
+  .glow-dark .leaf, .dark .leaf { background: #8fae6f; }
+
+  /* twinkling fairy-light bulbs */
+  .bulb { animation: twinkle 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes twinkle { 0%, 100% { opacity: 1; } 45% { opacity: 0.45; } 55% { opacity: 0.9; } }
+  @media (prefers-reduced-motion: reduce) { .bulb { animation: none; } }
   .dots { background-image: radial-gradient(rgba(138, 103, 32, 0.14) 1px, transparent 1.2px); background-size: 22px 22px; }
 
   /* type */
@@ -78,12 +100,18 @@
 
   /* section heads */
   .head { display: grid; gap: 14px; justify-items: center; text-align: center; max-width: 700px; margin: 0 auto 64px; }
-  .orn { display: flex; align-items: center; gap: 10px; color: var(--color-gold); }
+  .orn { display: flex; align-items: center; gap: 30px; color: var(--color-gold); }
   .orn::before, .orn::after { content: ""; width: 44px; height: 1px; background: currentColor; opacity: 0.7; }
-  .orn i { width: 7px; height: 7px; transform: rotate(45deg); border: 1px solid currentColor; }
+  /* ivy sprig: two leaves with a small white blossom between them */
+  .orn i { position: relative; width: 10px; height: 10px; border-radius: 50%; background: #fbf6ea; box-shadow: 0 0 0 1.5px var(--color-gold), 0 0 10px rgba(240, 200, 110, 0.55); }
+  .orn i::before, .orn i::after { content: ""; position: absolute; top: 1px; width: 11px; height: 8px; background: var(--color-sage); border-radius: 0 100% 0 100%; }
+  .orn i::before { right: 13px; transform: rotate(-12deg); }
+  .orn i::after { left: 13px; transform: scaleX(-1) rotate(-12deg); }
+  :is(.dark, .glow-dark, .bg-espresso) .orn i::before, :is(.dark, .glow-dark, .bg-espresso) .orn i::after { background: #8fae6f; }
   .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; margin-bottom: 56px; }
   .head-row .head { justify-items: start; text-align: left; margin: 0; }
   .head-row .head .orn::before, .head.left .orn::before { display: none; }
+  .head-row .head .orn, .head.left .orn { padding-left: 24px; }
   .head.left { justify-items: start; text-align: left; margin-inline: 0; }
   @media (max-width: 760px) {
     .head { margin-bottom: 36px; }
@@ -106,7 +134,7 @@
   .btn-gold:hover { box-shadow: 0 14px 28px -10px rgba(201, 162, 75, 0.85); }
   .btn-outline { border-color: rgba(201, 162, 75, 0.7); color: var(--color-gold-light); }
   .btn-outline:hover { background: rgba(201, 162, 75, 0.12); }
-  .btn-berry { background: var(--color-berry); color: var(--color-cream); box-shadow: 0 12px 26px -12px rgba(142, 27, 46, 0.7); }
+  .btn-berry { background: var(--color-berry); color: var(--color-cream); box-shadow: 0 12px 26px -12px rgba(143, 58, 34, 0.7); }
   .btn-berry:hover { background: #7a1626; }
   .btn-ink { border-color: var(--color-ink); color: var(--color-ink); }
   .btn-ink:hover { background: var(--color-ink); color: var(--color-cream); }
@@ -120,7 +148,7 @@
   .ph { position: relative; overflow: hidden; background: var(--color-cheesecake); }
   .ph > img { inset: auto 0 0 0 !important; top: auto !important; height: calc(100% + var(--crop, 0%)) !important; object-fit: cover; object-position: center bottom; }
 
-  .pill { display: inline-flex; align-items: center; gap: 6px; font: 600 11px/16px var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(20, 17, 15, 0.78); color: var(--color-gold-light); backdrop-filter: blur(6px); }
+  .pill { display: inline-flex; align-items: center; gap: 6px; font: 600 11px/16px var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(36, 22, 15, 0.78); color: var(--color-gold-light); backdrop-filter: blur(6px); }
   .pill.light { background: rgba(250, 245, 236, 0.92); color: var(--color-ink); }
   .tbd { display: inline-block; font: 700 10px/16px var(--font-sans); letter-spacing: 0.06em; padding: 0 7px; border-radius: 99px; background: #f6e3e6; color: var(--color-berry); vertical-align: 1px; }
   .dark .tbd, .glow-dark .tbd { background: rgba(184, 50, 74, 0.2); color: #f08a9c; }
@@ -152,8 +180,8 @@
   .bcard .top { display: flex; justify-content: space-between; align-items: center; position: relative; }
   .bcard .mono { font: 600 7.6cqw var(--font-serif); letter-spacing: 4px; color: var(--color-gold); }
   .bcard .tier { font: 600 max(9px, 2.4cqw) var(--font-sans); letter-spacing: 2.4px; text-transform: uppercase; }
-  .bcard .chipx { width: 11.4cqw; aspect-ratio: 48 / 36; border-radius: 7px; background: linear-gradient(160deg, #ebd08f, #9a7329); position: relative; box-shadow: inset 0 0 0 1px rgba(20, 17, 15, 0.25); }
-  .bcard .chipx::before { content: ""; position: absolute; inset: 22% 29%; border: 1px solid rgba(20, 17, 15, 0.35); border-radius: 3px; }
+  .bcard .chipx { width: 11.4cqw; aspect-ratio: 48 / 36; border-radius: 7px; background: linear-gradient(160deg, #ebd08f, #9a7329); position: relative; box-shadow: inset 0 0 0 1px rgba(36, 22, 15, 0.25); }
+  .bcard .chipx::before { content: ""; position: absolute; inset: 22% 29%; border: 1px solid rgba(36, 22, 15, 0.35); border-radius: 3px; }
   .bcard .name { font: 600 7.6cqw/1.2 var(--font-serif); letter-spacing: 0.25em; position: relative; }
   .bcard .sub { display: flex; justify-content: space-between; font: 500 max(10px, 2.9cqw) var(--font-sans); color: var(--color-gold); opacity: 0.9; position: relative; gap: 12px; }
 
@@ -202,7 +230,7 @@
   .st.pend { background: #fbf1dc; color: var(--color-gold-deep); }
   .st.bad { background: #f6e3e6; color: var(--color-berry); }
   .st.mute { background: #efeae2; color: var(--color-muted); }
-  .st.info { background: #1e1916; color: var(--color-gold-light); }
+  .st.info { background: #32201a; color: var(--color-gold-light); }
 
   /* tables */
   .tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -214,7 +242,7 @@
 
   /* logo */
   .logo { display: flex; align-items: center; gap: 12px; }
-  .logo .badge { width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid var(--color-gold); display: grid; place-items: center; font: 600 18px var(--font-serif); color: var(--color-gold); letter-spacing: 1px; background: radial-gradient(circle at 30% 30%, #2a231d, #0f0c0b); box-shadow: inset 0 0 0 4px #14110f, inset 0 0 0 5px rgba(201, 162, 75, 0.4); flex: none; }
+  .logo .badge { width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid var(--color-gold); display: grid; place-items: center; font: 600 18px var(--font-serif); color: var(--color-gold); letter-spacing: 1px; background: radial-gradient(circle at 30% 30%, #2a231d, #0f0c0b); box-shadow: inset 0 0 0 4px #24160f, inset 0 0 0 5px rgba(201, 162, 75, 0.4); flex: none; }
   .logo .wm small { display: block; font: 600 10px/12px var(--font-sans); letter-spacing: 3px; color: var(--color-gold); }
   .logo .wm span { font: 600 22px/24px var(--font-serif); color: var(--color-cream); white-space: nowrap; }
   .logo.on-light .wm span { color: var(--color-ink); }

@@ -12,6 +12,7 @@ import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { biz, LINKS, peso, ROOMS } from "@/lib/content";
 import { getLiveItems } from "@/lib/menu";
 import { RestaurantJsonLd } from "@/components/RestaurantJsonLd";
+import { FairyLights, IvyGarland } from "@/components/decor";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
       <Packages />
       <Reviews />
       <section className="sec !pt-0">
+        <IvyGarland className="mb-12 md:mb-16" />
         <div className="wrap">
           <div className="head-row">
             <RevealHead align="left" eyebrow="Inside the House" parts={[{ t: "A little piece of" }, { t: "Europe in Iligan", em: true }]} className="!m-0" />
@@ -88,7 +90,8 @@ function Hero() {
   return (
     <section className="glow-dark spotlight relative overflow-hidden pt-7 pb-16 md:pt-[88px] md:pb-[120px]">
       <span className="blob top-[-120px] right-[-80px] size-[520px] bg-gold/40" />
-      <span className="blob bottom-[-160px] left-[-120px] size-[480px] bg-berry/60" style={{ animationDelay: "-6s" }} />
+      <span className="blob bottom-[-160px] left-[-120px] size-[480px] bg-sage/50" style={{ animationDelay: "-6s" }} />
+      <FairyLights drape className="absolute inset-x-0 top-0 z-[1] opacity-90" />
       <Dust />
       <div className="wrap relative grid items-center gap-7 lg:grid-cols-[minmax(0,600px)_1fr] lg:gap-16">
         <div>
@@ -128,12 +131,12 @@ function Hero() {
             </div>
             <div data-depth="0.6" className="absolute top-4 left-[6%] h-[89%] w-[83%] lg:top-[26px] lg:left-[90px] lg:h-[590px] lg:w-[420px]">
               <div className="fade-up size-full" style={{ animationDelay: "300ms" }}>
-                <Photo name="hero-basque-golden-cheesecake" eager sizes="(max-width: 1024px) 300px, 420px" className="kenburns size-full rounded-t-full rounded-b-[14px] shadow-[var(--shadow-deep)]" />
+                <div className="gilt size-full overflow-hidden rounded-t-full rounded-b-[14px]"><Photo name="hero-basque-golden-cheesecake" eager sizes="(max-width: 1024px) 300px, 420px" className="kenburns size-full" /></div>
               </div>
             </div>
             <div data-depth="1.1" className="absolute top-[66%] left-0 lg:top-[440px]">
               <div className="float-y d2">
-                <Photo name="interior-dining-hall-01" sizes="250px" className="h-[116px] w-[150px] rounded-[18px] border-4 border-espresso shadow-[var(--shadow-deep)] lg:h-[190px] lg:w-[250px] lg:border-[6px]" />
+                <div className="gilt overflow-hidden rounded-[18px]"><Photo name="interior-dining-hall-01" alt="" sizes="250px" className="h-[106px] w-[140px] lg:h-[180px] lg:w-[240px]" /></div>
               </div>
             </div>
             <div data-depth="1.4" className="absolute top-2 right-0 lg:top-6 lg:left-[420px]">
@@ -226,7 +229,7 @@ async function MenuPreview() {
           <Tilt max={5} className="rounded-3xl lg:col-span-2 lg:row-span-2" style={{}}>
             <article data-reveal="clip" className="group relative min-h-[440px] overflow-hidden rounded-3xl text-cream shadow-[var(--shadow-deep)] lg:h-full lg:min-h-[640px]">
               <Photo name="hero-basque-golden-cheesecake" alt="Basque Golden Creamy Cheesecake" sizes="(max-width:1024px) 100vw, 620px" className="zoom-img !absolute inset-0" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,17,15,0)_35%,rgba(20,17,15,.92)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,0)_35%,rgba(36,22,15,.92)_100%)]" />
               <span className="pill absolute top-6 left-6">◆ Signature of the House</span>
               <SpinBadge text="BEST SELLER · HOUSE FAVOURITE · " className="absolute top-5 right-5 size-[104px] text-gold-light" center={<Icon name="star" size={26} className="text-gold" />} />
               <div className="absolute inset-x-6 bottom-6 grid gap-3 lg:inset-x-9 lg:bottom-9">
@@ -255,7 +258,7 @@ async function MenuPreview() {
                         <Photo name={f.img} alt={f.name} sizes="300px" className="zoom-img aspect-[4/3.1]" />
                         <span className="pill light absolute top-3.5 left-3.5">{f.badge}</span>
                         {p ? (
-                          <span className="absolute right-3.5 -bottom-[18px] rounded-xl bg-berry px-3.5 py-2 text-base font-bold text-cream shadow-[0_10px_20px_-8px_rgba(142,27,46,.7)] transition duration-500 group-hover:-translate-y-1 group-hover:rotate-[-3deg]">
+                          <span className="absolute right-3.5 -bottom-[18px] rounded-xl bg-berry px-3.5 py-2 text-base font-bold text-cream shadow-[0_10px_20px_-8px_rgba(143,58,34,.7)] transition duration-500 group-hover:-translate-y-1 group-hover:rotate-[-3deg]">
                             {peso(p)} <small className="text-[11px] font-medium opacity-80">{f.unit}</small>
                           </span>
                         ) : null}
@@ -349,6 +352,7 @@ function Numbers() {
 function BlackCardSection() {
   return (
     <section className="sec glow-dark spotlight relative overflow-hidden" id="black-card">
+      <FairyLights className="absolute inset-x-0 top-0" swags={5} />
       <span className="blob top-1/3 left-[-160px] size-[420px] bg-gold/30" />
       <div className="wrap relative grid items-start gap-9 lg:grid-cols-[1fr_560px] lg:gap-[72px]">
         <div>
@@ -417,10 +421,10 @@ function Venues() {
           </Link>
         </div>
         <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr] lg:gap-8">
-          <article data-reveal="left" className="flex flex-col overflow-hidden rounded-3xl bg-espresso text-cream shadow-[var(--shadow-deep)]">
+          <article data-reveal="left" className="gilt flex flex-col overflow-hidden rounded-3xl text-cream">
             <div className="group relative h-[220px] overflow-hidden md:h-[360px]">
               <Photo name="vip-room-family-01" alt="VIP Family Room with round table and arched mirror" sizes="(max-width:1024px) 100vw, 700px" className="zoom-img !absolute inset-0" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(20,17,15,.85))]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(36,22,15,.85))]" />
               <span className="pill absolute top-5 left-5">◆ Premier VIP Rooms</span>
               <div className="absolute bottom-[22px] left-7">
                 <div className="eyebrow !text-gold-light">3 private rooms · 8–30 guests · room fee waived</div>
@@ -454,7 +458,7 @@ function Venues() {
             <Tilt max={5} className="rounded-3xl">
               <article data-reveal="right" className="group relative h-full min-h-[380px] overflow-hidden rounded-3xl text-cream shadow-[var(--shadow-deep)] lg:min-h-[430px]">
                 <Photo name="interior-dining-hall-01" alt="Main dining hall" sizes="(max-width:1024px) 100vw, 520px" className="zoom-img !absolute inset-0" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,17,15,.1)_20%,rgba(20,17,15,.92))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,.1)_20%,rgba(36,22,15,.92))]" />
                 <span className="pill absolute top-5 left-5">◆ Exclusive booking</span>
                 <div className="absolute inset-x-7 bottom-7 grid gap-2.5">
                   <div className="eyebrow !text-gold-light">50–60 guests</div>
@@ -506,7 +510,7 @@ function Packages() {
               <Tilt max={9} className="rounded-3xl">
                 <article className="group relative min-h-[380px] overflow-hidden rounded-3xl text-cream shadow-[var(--shadow-deep)] md:min-h-[480px]">
                   <Photo name={p.img} alt="" sizes="(max-width:768px) 100vw, 400px" className="zoom-img !absolute inset-0" />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,17,15,0)_30%,rgba(20,17,15,.94))] transition duration-700 group-hover:bg-[linear-gradient(180deg,rgba(142,27,46,.15)_10%,rgba(20,17,15,.96))]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,0)_30%,rgba(36,22,15,.94))] transition duration-700 group-hover:bg-[linear-gradient(180deg,rgba(143,58,34,.15)_10%,rgba(36,22,15,.96))]" />
                   <span className="absolute top-5 left-5 grid size-[52px] place-items-center rounded-full bg-cream text-berry shadow-lg transition duration-500 group-hover:rotate-[-12deg] group-hover:scale-110">
                     <Icon name={p.icon} size={24} />
                   </span>
@@ -628,21 +632,26 @@ function Reviews() {
 function About() {
   return (
     <section className="sec glow-dark spotlight relative overflow-hidden" id="about">
+      <FairyLights drape className="absolute inset-x-0 top-0 opacity-90" swags={5} />
       <Dust />
       <div className="wrap relative grid items-center gap-9 lg:grid-cols-[500px_1fr] lg:gap-24">
         <Parallax className="relative h-[420px] md:h-[600px]">
           <div data-depth="0.4" className="absolute top-0 left-0">
             <div data-reveal="clip">
-              <Photo name="interior-counter-01" alt="Counter with the Iligan Cheesecake House sign" sizes="400px" className="h-[400px] w-[290px] rounded-t-full rounded-b-2xl shadow-[var(--shadow-deep)] md:h-[560px] md:w-[400px]" />
+              <div className="gilt overflow-hidden rounded-t-full rounded-b-2xl">
+                <Photo name="interior-counter-01" alt="Counter with the Iligan Cheesecake House sign" sizes="400px" className="h-[390px] w-[280px] md:h-[550px] md:w-[390px]" />
+              </div>
             </div>
           </div>
           <div data-depth="1" className="absolute right-0 bottom-0">
             <div className="float-y d2" data-reveal="scale" style={d(300)}>
-              <Photo name="storefront-sign-01" alt="Storefront sign" sizes="230px" className="h-[130px] w-[170px] rounded-[18px] border-[6px] border-espresso shadow-[var(--shadow-deep)] md:h-[180px] md:w-[230px]" />
+              <div className="gilt overflow-hidden rounded-[18px]">
+                <Photo name="storefront-sign-01" alt="Storefront sign" sizes="230px" className="h-[120px] w-[160px] md:h-[170px] md:w-[220px]" />
+              </div>
             </div>
           </div>
           <div data-depth="1.6" className="absolute top-8 right-4 hidden md:block">
-            <SpinBadge text="PROUDLY ILIGAN · SINCE DAY ONE · " className="size-[120px] text-gold-light" center={<span className="font-serif text-2xl text-gold">ICH</span>} />
+            <SpinBadge text="PROUDLY ILIGAN · SINCE 2016 · " className="size-[120px] text-gold-light" center={<span className="font-serif text-2xl text-gold">ICH</span>} />
           </div>
         </Parallax>
         <div>

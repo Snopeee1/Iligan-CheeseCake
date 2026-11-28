@@ -14,9 +14,9 @@ import { fmtDate, nowMs } from "@/lib/format";
 export const metadata: Metadata = { title: "Sales & analytics" };
 
 const SALES: Series[] = [
-  { key: "dineIn", name: "Dine-in", color: "#8E1B2E" },
+  { key: "dineIn", name: "Dine-in", color: "#8f3a22" },
   { key: "takeout", name: "Takeout", color: "#C9A24B" },
-  { key: "delivery", name: "Delivery apps", color: "#55624A" },
+  { key: "delivery", name: "Delivery apps", color: "#4d6b3c" },
 ];
 const RANGES = [
   ["7", "7 days"],
@@ -198,7 +198,7 @@ async function Inner({ searchParams }: { searchParams: Promise<{ range?: string 
           <StackedBars
             rows={memberRows}
             series={[
-              { key: "joined", name: "New members", color: "#14110F" },
+              { key: "joined", name: "New members", color: "#24160f" },
               { key: "vouchers", name: "Vouchers used", color: "#C9A24B" },
             ]}
             height={150}

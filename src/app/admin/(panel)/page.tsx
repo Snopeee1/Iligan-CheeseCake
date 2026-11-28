@@ -70,7 +70,7 @@ async function Inner() {
       {/* HERO */}
       <section className="glow-dark spotlight relative -mx-4 -mt-4 overflow-hidden px-6 py-8 md:-mx-8 md:-mt-8 md:px-10 md:py-10">
         <span className="blob top-[-140px] right-[-80px] size-[420px] bg-gold/30" />
-        <span className="blob bottom-[-160px] left-[10%] size-[380px] bg-berry/40" style={{ animationDelay: "-5s" }} />
+        <span className="blob bottom-[-160px] left-[10%] size-[380px] bg-sage/40" style={{ animationDelay: "-5s" }} />
         <Dust />
         <div className="relative flex flex-wrap items-end justify-between gap-6">
           <div>
