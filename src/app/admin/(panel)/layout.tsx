@@ -8,6 +8,7 @@ import { PinRevealHost } from "@/components/AdminClient";
 import { Dust } from "@/components/motion";
 import { staffLogout } from "@/app/actions/admin";
 import { getStaff } from "@/lib/auth";
+import { FairyLights } from "@/components/decor";
 
 export const metadata: Metadata = { title: { default: "Admin", template: "%s · ICH Admin" }, robots: { index: false, follow: false } };
 
@@ -27,8 +28,9 @@ async function Who() {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-dvh bg-[#F6F1E8] lg:grid lg:grid-cols-[260px_minmax(0,1fr)]">
+    <div className="min-h-dvh lg:grid lg:grid-cols-[260px_minmax(0,1fr)]">
       <aside className="glow-dark sticky top-0 hidden h-dvh flex-col gap-8 overflow-hidden p-5 lg:flex">
+        <FairyLights className="absolute inset-x-0 top-0 opacity-80" swags={2} sag={14} />
         <Dust />
         <div className="relative"><Logo href="/admin" /></div>
         <div className="relative"><AdminSidebar /></div>

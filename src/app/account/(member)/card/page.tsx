@@ -4,6 +4,7 @@ import { BlackCard3D, Dust } from "@/components/motion";
 import { LiveQr } from "@/components/LiveQr";
 import { requireMember } from "@/lib/auth";
 import { fmtDate } from "@/lib/format";
+import { FairyLights } from "@/components/decor";
 
 export const metadata: Metadata = { title: "My card", robots: { index: false } };
 
@@ -19,6 +20,7 @@ async function Inner() {
   const m = await requireMember();
   return (
     <div className="glow-dark relative min-h-[calc(100dvh-72px)] overflow-hidden py-8">
+      <FairyLights drape className="absolute inset-x-0 top-0 opacity-90" swags={4} />
       <Dust />
       <div className="relative mx-auto grid max-w-md gap-6 px-5">
         <BlackCard3D name={m.name.toUpperCase()} sub={m.cardNo} />

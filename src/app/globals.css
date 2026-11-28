@@ -155,7 +155,7 @@
   .stars { color: var(--color-gold); letter-spacing: 3px; }
 
   /* cards & panels */
-  .panel { background: #fff; border: 1px solid var(--color-line); border-radius: 20px; padding: 24px; box-shadow: var(--shadow-soft); }
+  .panel { background: #fffaf0; border: 1px solid var(--color-line); border-radius: 20px; padding: 24px; box-shadow: var(--shadow-soft); }
   .panel-dark { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(201, 162, 75, 0.22); border-radius: 20px; padding: 24px; }
   .note { display: inline-flex; align-items: center; gap: 8px; font: 500 13px var(--font-sans); color: var(--color-gold-light); border: 1px solid rgba(201, 162, 75, 0.4); background: rgba(201, 162, 75, 0.12); border-radius: 999px; padding: 8px 16px; }
   .chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--color-line); border-radius: 999px; padding: 6px 12px; font: 500 13px var(--font-sans); background: var(--color-cream); }

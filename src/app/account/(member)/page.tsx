@@ -12,6 +12,7 @@ import { fmtDate, fmtTime, nowMs } from "@/lib/format";
 import { requireMember } from "@/lib/auth";
 import { list } from "@/lib/db";
 import { ROOMS } from "@/lib/content";
+import { FairyLights } from "@/components/decor";
 
 export const metadata: Metadata = { title: "My Black Card", robots: { index: false } };
 
@@ -51,6 +52,7 @@ async function DashboardInner() {
     <>
       {/* HERO BAND */}
       <section className="glow-dark spotlight relative overflow-hidden">
+        <FairyLights className="absolute inset-x-0 top-0 opacity-90" swags={5} />
         <span className="blob top-[-160px] right-[-100px] size-[460px] bg-gold/30" />
         <span className="blob bottom-[-180px] left-[-120px] size-[420px] bg-sage/45" style={{ animationDelay: "-6s" }} />
         <Dust />

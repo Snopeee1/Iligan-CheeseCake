@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Icon, type IconName } from "./Icon";
 import { Dust } from "./motion";
+import { FairyLights } from "./decor";
 
 export function AdminTitle({ title, sub, children }: { title: string; sub?: string; children?: React.ReactNode }) {
   return (
     <section className="glow-dark spotlight relative -mx-4 -mt-4 overflow-hidden px-6 py-7 md:-mx-8 md:-mt-8 md:px-10 md:py-9">
+      <FairyLights className="absolute inset-x-0 top-0" swags={6} />
       <span className="blob top-[-140px] right-[-60px] size-[360px] bg-gold/25" />
       <Dust />
       <div className="relative flex flex-wrap items-end justify-between gap-4">

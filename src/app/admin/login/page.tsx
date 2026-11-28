@@ -9,6 +9,7 @@ import { ManilaClock } from "@/components/AuthShell";
 import { Dust, Tilt } from "@/components/motion";
 import { Words, SpinBadge } from "@/components/fx";
 import { getStaff } from "@/lib/auth";
+import { FairyLights } from "@/components/decor";
 
 export const metadata: Metadata = { title: "Admin sign in", robots: { index: false, follow: false } };
 
@@ -24,6 +25,7 @@ export default function AdminLogin() {
       {/* Brand side */}
       <section className="glow-dark spotlight relative hidden overflow-hidden lg:block">
         <Photo name="interior-dining-hall-01" alt="" sizes="60vw" eager className="kenburns !absolute inset-0 opacity-35" />
+        <FairyLights drape className="absolute inset-x-0 top-0 z-[1] opacity-90" swags={5} />
         <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(13,11,10,.96)_25%,rgba(36,22,15,.65)_60%,rgba(143,58,34,.35))]" />
         <span className="blob top-[-140px] right-[-80px] size-[480px] bg-gold/30" />
         <span className="blob bottom-[-160px] left-[-120px] size-[440px] bg-sage/50" style={{ animationDelay: "-6s" }} />
@@ -85,6 +87,7 @@ export default function AdminLogin() {
         <div className="relative mx-auto grid w-full max-w-[440px] gap-8">
           {/* mobile brand header */}
           <div className="glow-dark relative -mx-6 -mt-10 grid gap-5 overflow-hidden px-6 pt-8 pb-9 sm:-mx-12 sm:px-12 lg:hidden">
+            <FairyLights className="absolute inset-x-0 top-0" swags={4} />
             <Dust />
             <div className="relative flex items-center justify-between">
               <Logo href="/" />

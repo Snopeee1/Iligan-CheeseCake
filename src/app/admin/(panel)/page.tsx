@@ -12,6 +12,7 @@ import { requireStaff } from "@/lib/auth";
 import { list } from "@/lib/db";
 import { ROOMS } from "@/lib/content";
 import { dayLabel, fmtDate, fmtTime, todayPH, nowMs } from "@/lib/format";
+import { FairyLights } from "@/components/decor";
 
 export default function AdminHome() {
   return (
@@ -69,6 +70,7 @@ async function Inner() {
     <>
       {/* HERO */}
       <section className="glow-dark spotlight relative -mx-4 -mt-4 overflow-hidden px-6 py-8 md:-mx-8 md:-mt-8 md:px-10 md:py-10">
+        <FairyLights className="absolute inset-x-0 top-0" swags={6} />
         <span className="blob top-[-140px] right-[-80px] size-[420px] bg-gold/30" />
         <span className="blob bottom-[-160px] left-[10%] size-[380px] bg-sage/40" style={{ animationDelay: "-5s" }} />
         <Dust />
