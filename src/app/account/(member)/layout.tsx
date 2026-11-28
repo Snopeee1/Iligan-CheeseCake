@@ -2,6 +2,9 @@ import { Logo } from "@/components/ui";
 import { MemberNav, MemberTabs } from "@/components/MemberNav";
 import { memberLogout } from "@/app/actions/member";
 import { Icon } from "@/components/Icon";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default function MemberLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -11,7 +11,8 @@ const init: FormState = {};
 
 export function Field({ label, name, error, hint, children, className = "" }: { label: string; name: string; error?: string; hint?: string; children: React.ReactNode; className?: string }) {
   return (
-    <label className={`label ${className}`} htmlFor={name}>
+    // the label wraps its input, so the association never depends on (possibly clashing) ids
+    <label className={`label ${className}`}>
       <span>
         {label} {hint ? <span className="hint">· {hint}</span> : null}
       </span>
@@ -83,7 +84,7 @@ function InquiryInner({ defaultTopic, source, onReset }: { defaultTopic: string;
         <input id="name" name="name" className="input" placeholder="e.g. Maria Santos" defaultValue={v.name} autoComplete="name" aria-invalid={!!e.name} required />
       </Field>
       <Field label="Mobile or Messenger name" name="contact" error={e.contact}>
-        <input id="contact" name="contact" className="input" placeholder="09XX XXX XXXX" defaultValue={v.contact} autoComplete="tel" aria-invalid={!!e.contact} required />
+        <input id="inq-contact" name="contact" className="input" placeholder="09XX XXX XXXX" defaultValue={v.contact}autoComplete="tel" aria-invalid={!!e.contact} required />
       </Field>
       <Field label="Date" name="date" hint="optional" error={e.date}>
         <input id="date" type="date" name="date" min={minDate} className="input" defaultValue={v.date} aria-invalid={!!e.date} />

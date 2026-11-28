@@ -11,10 +11,12 @@ import { d, Marquee, RevealHead, SpinBadge, Words } from "@/components/fx";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { biz, LINKS, peso, ROOMS } from "@/lib/content";
 import { getLiveItems } from "@/lib/menu";
+import { RestaurantJsonLd } from "@/components/RestaurantJsonLd";
 
 export default function Home() {
   return (
     <>
+      <RestaurantJsonLd />
       <Hero />
       <Ribbons />
       <div className="wrap pt-12 md:pt-20" data-reveal="tilt">

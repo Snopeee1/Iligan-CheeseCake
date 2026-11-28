@@ -63,8 +63,10 @@
 
   /* type */
   .eyebrow { font: 600 12px/16px var(--font-sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold-deep); }
-  .dark .eyebrow, .glow-dark .eyebrow, .bg-espresso .eyebrow, .bg-ink .eyebrow { color: var(--color-gold); }
   .bg-cheesecake .eyebrow { color: #6f5216; }
+  /* extra specificity (not source order, which the CSS optimizer may change) so dark
+     cards nested inside light sections keep a readable gold label */
+  :is(.dark, .glow-dark, .bg-espresso, .bg-ink) .eyebrow.eyebrow { color: var(--color-gold); }
   .h1 { font: 500 clamp(48px, 7vw, 92px) / 1.04 var(--font-serif); letter-spacing: -1.5px; }
   .h2 { font: 500 clamp(36px, 4.4vw, 52px) / 1.12 var(--font-serif); letter-spacing: -0.5px; text-wrap: balance; }
   .h3 { font: 600 clamp(26px, 2.6vw, 32px) / 1.25 var(--font-serif); }

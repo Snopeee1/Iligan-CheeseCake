@@ -20,7 +20,7 @@ export function Coupon({ headline = DEFAULT_SETTINGS.offerHeadline, body = DEFAU
       </div>
       <div className="relative grid content-center gap-2.5 px-6 pt-7 pb-2 lg:px-11 lg:py-10">
         <div className="eyebrow !text-gold-light">Exclusive Customer Offer</div>
-        <h3 className="font-serif text-[28px] leading-[34px] font-semibold lg:text-[36px] lg:leading-[42px]">{headline}</h3>
+        <h2 className="font-serif text-[28px] leading-[34px] font-semibold lg:text-[36px] lg:leading-[42px]">{headline}</h2>
         <p className="text-[15px] opacity-85">{body}</p>
       </div>
       <div className="relative grid grid-cols-2 content-center gap-2.5 px-6 pt-4 pb-7 lg:py-8 lg:pr-9 lg:pl-0">

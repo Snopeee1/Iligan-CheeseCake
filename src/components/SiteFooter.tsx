@@ -62,7 +62,7 @@ export function SiteFooter() {
 function FootCol({ title, items }: { title: string; items: [string, string][] }) {
   return (
     <div>
-      <h5 className="mb-4 text-xs font-semibold tracking-[2px] text-gold uppercase">{title}</h5>
+      <h2 className="mb-4 text-xs font-semibold tracking-[2px] text-gold uppercase">{title}</h2>
       <ul className="grid gap-2.5 text-[15px] text-cream/80">
         {items.map(([label, href]) => (
           <li key={label}>
