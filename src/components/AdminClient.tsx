@@ -25,6 +25,7 @@ import {
 import { Icon } from "./Icon";
 import { IconInput, SecretInput } from "./AuthShell";
 import { QrScanner } from "./QrScanner";
+import { useKeepValues } from "./keepForm";
 
 const init: Result = {};
 
@@ -76,8 +77,9 @@ function PinReveal({ data, onClose }: { data: Record<string, unknown>; onClose: 
 /* ---------- login ---------- */
 export function StaffLoginForm() {
   const [state, action, pending] = useActionState(staffLogin, init);
+  const submit = useKeepValues(action);
   return (
-    <form action={action} className="grid gap-5" noValidate>
+    <form onSubmit={submit} className="grid gap-5" noValidate>
       <div className="grid gap-2">
         <label htmlFor="email" className="text-sm font-semibold">
           Work email
@@ -211,8 +213,9 @@ export function AddMemberForm() {
     }
     return r;
   }, init);
+  const submit = useKeepValues(action);
   return (
-    <form ref={formRef} action={action} className="grid gap-3">
+    <form ref={formRef} onSubmit={submit} className="grid gap-3">
       <h3 className="h4">Register in store</h3>
       <input name="name" className="input" placeholder="Full name" required />
       <input name="mobile" className="input" placeholder="Mobile, e.g. 09171234567" inputMode="tel" required />
@@ -238,15 +241,18 @@ export function CounterScanner() {
   const [err, setErr] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const [voucher, setVoucher] = useState(false);
+  const visitRef = useRef<HTMLFormElement>(null);
   const [state, action, saving] = useActionState(async (prev: Result, f: FormData) => {
     const r = await recordVisit(prev, f);
     if (r.ok && member) {
+      visitRef.current?.reset();
       const fresh = await lookupCard(member.cardNo);
       setMember(fresh.member ?? null);
       setVoucher(false);
     }
     return r;
   }, init);
+  const submitVisit = useKeepValues(action);
 
   const lookup = (v: string) =>
     start(async () => {
@@ -317,7 +323,7 @@ export function CounterScanner() {
             </p>
           ) : null}
           {member.status === "active" && !member.expired ? (
-            <form action={action} className="grid gap-4 border-t border-line pt-5">
+            <form ref={visitRef} onSubmit={submitVisit} className="grid gap-4 border-t border-line pt-5">
               <input type="hidden" name="memberId" value={member.id} />
               <fieldset>
                 <legend className="mb-2 text-sm font-semibold">Free drink this visit</legend>
@@ -370,8 +376,9 @@ export function MenuRowEditor({ itemKey, name, price, basePrice, available, hidd
   const [state, action, pending] = useActionState(saveMenuItem, init);
   const [avail, setAvail] = useState(available);
   const [, start] = useTransition();
+  const submit = useKeepValues(action);
   return (
-    <form action={action} className="grid items-center gap-3 border-b border-line px-4 py-3 last:border-0 md:grid-cols-[1fr_130px_auto_auto_auto]">
+    <form onSubmit={submit} className="grid items-center gap-3 border-b border-line px-4 py-3 last:border-0 md:grid-cols-[1fr_130px_auto_auto_auto]">
       <input type="hidden" name="key" value={itemKey} />
       <div>
         <b className="text-sm">{name}</b>
@@ -410,8 +417,9 @@ export function MenuRowEditor({ itemKey, name, price, basePrice, available, hidd
 /* ---------- settings ---------- */
 export function SettingsForm({ s }: { s: { offerHeadline: string; offerBody: string; offerActive: boolean; announcement: string; announcementActive: boolean } }) {
   const [state, action, pending] = useActionState(saveSettings, init);
+  const submit = useKeepValues(action);
   return (
-    <form action={action} className="grid gap-4">
+    <form onSubmit={submit} className="grid gap-4">
       <h2 className="h4">Offer &amp; announcement</h2>
       <label className="label">
         Offer headline <span className="hint">keep “5–10%” and “selected”</span>
@@ -471,9 +479,15 @@ export function CallingCardQr({ url }: { url: string }) {
 }
 
 export function AddStaffForm() {
-  const [state, action, pending] = useActionState(addStaff, init);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [state, action, pending] = useActionState(async (prev: Result, f: FormData) => {
+    const r = await addStaff(prev, f);
+    if (r.ok) formRef.current?.reset();
+    return r;
+  }, init);
+  const submit = useKeepValues(action);
   return (
-    <form action={action} className="grid gap-3">
+    <form ref={formRef} onSubmit={submit} className="grid gap-3">
       <h2 className="h4">Add a staff account</h2>
       <input name="name" className="input" placeholder="Name" required />
       <input name="email" type="email" className="input" placeholder="Email" required autoComplete="off" />

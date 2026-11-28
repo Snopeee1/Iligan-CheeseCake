@@ -47,12 +47,13 @@ export function MotionRoot() {
       catchUp = () => {
         if (ticking) return;
         ticking = true;
-        requestAnimationFrame(() => {
+        // a timer (not rAF) so this still runs if frames are paused or throttled
+        window.setTimeout(() => {
           ticking = false;
           document.querySelectorAll("[data-reveal]:not(.in), .words:not(.in):not(.auto)").forEach((el) => {
             if (el.getBoundingClientRect().top < innerHeight * 0.9) reveal(el);
           });
-        });
+        }, 60);
       };
       window.addEventListener("scroll", catchUp, { passive: true });
       fail = window.setTimeout(() => {

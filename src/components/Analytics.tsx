@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from "react";
 import { saveSale, type Result } from "@/app/actions/admin";
 import { Icon } from "./Icon";
+import { useKeepValues } from "./keepForm";
 
 const peso = (n: number) => `₱${Math.round(n).toLocaleString("en-PH")}`;
 const short = (n: number) => (n >= 1_000_000 ? `₱${(n / 1_000_000).toFixed(1)}M` : n >= 1000 ? `₱${(n / 1000).toFixed(n >= 10_000 ? 0 : 1)}k` : `₱${n}`);
@@ -155,8 +156,9 @@ export function SalesForm({ today, entries }: { today: string; entries: Record<s
   const [date, setDate] = useState(today);
   const cur = entries[date];
   const [state, action, pending] = useActionState(saveSale, {} as Result);
+  const submit = useKeepValues(action);
   return (
-    <form action={action} key={date} className="grid gap-4">
+    <form onSubmit={submit} key={date} className="grid gap-4">
       <div className="flex items-center justify-between gap-3">
         <h2 className="font-serif text-2xl font-semibold">Record daily sales</h2>
         {cur ? <span className="st pend">Editing saved day</span> : <span className="st mute">New entry</span>}

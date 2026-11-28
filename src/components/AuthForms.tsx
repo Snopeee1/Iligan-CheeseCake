@@ -4,13 +4,15 @@ import { useActionState } from "react";
 import { memberLogin, changePin, updateProfile, type AuthState } from "@/app/actions/member";
 import { Icon } from "./Icon";
 import { IconInput, SecretInput } from "./AuthShell";
+import { useKeepValues } from "./keepForm";
 
 const init: AuthState = {};
 
 export function MemberLoginForm({ next }: { next?: string }) {
   const [state, action, pending] = useActionState(memberLogin, init);
+  const submit = useKeepValues(action);
   return (
-    <form action={action} className="grid gap-5" noValidate>
+    <form onSubmit={submit} className="grid gap-5" noValidate>
       <input type="hidden" name="next" value={next ?? "/account"} />
       <div className="grid gap-2">
         <label htmlFor="id" className="text-sm font-semibold">
@@ -69,8 +71,9 @@ export function ChangePinForm() {
 
 export function ProfileForm({ email }: { email?: string | null }) {
   const [state, action, pending] = useActionState(updateProfile, init);
+  const submit = useKeepValues(action);
   return (
-    <form action={action} className="grid gap-4">
+    <form onSubmit={submit} className="grid gap-4">
       <label className="label" htmlFor="email">
         Email for receipts <span className="hint">optional</span>
         <input id="email" name="email" type="email" className="input" defaultValue={email ?? ""} placeholder="name@email.com" autoComplete="email" />

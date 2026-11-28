@@ -119,11 +119,13 @@ function BookingInner({ member, initialRoom, busy, onReset }: { member?: { name:
   const [picked, setRoom] = useState<string | null>(v.room ?? null);
   const room = picked ?? (wanted && ROOMS.some((x) => x.id === wanted) ? wanted : initialRoom);
   const [date, setDate] = useState(v.date ?? "");
-  const [time, setTime] = useState(v.time ?? "15:00");
+  const [chosenTime, setTime] = useState(v.time ?? "15:00");
   const [guests, setGuests] = useState(v.guests ?? "");
   const r = ROOMS.find((x) => x.id === room) ?? ROOMS[0];
   const monday = date ? new Date(`${date}T12:00:00+08:00`).getUTCDay() === 1 : false;
   const takenTimes = useMemo(() => new Set(busy.filter((b) => b.room === room && b.date === date).map((b) => b.time)), [busy, room, date]);
+  // a booked slot can never stay selected (e.g. the 3 PM default on a busy day)
+  const time = takenTimes.has(chosenTime) ? "" : chosenTime;
 
   if (state.ok)
     return (
@@ -205,7 +207,7 @@ function BookingInner({ member, initialRoom, busy, onReset }: { member?: { name:
         <div className="eyebrow">Your request</div>
         <h3 className="h3">{r.short}</h3>
         <Row k="Date" v={date ? new Date(`${date}T12:00:00+08:00`).toLocaleDateString("en-PH", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) : "—"} />
-        <Row k="Time" v={fmtTime(time)} />
+        <Row k="Time" v={time ? fmtTime(time) : "Pick a time"} />
         <Row k="Guests" v={guests || "—"} />
         {r.id === "exclusive" ? (
           <Row k="Consumable" v={<span>₱50,000 · promo ₱40–45k</span>} />

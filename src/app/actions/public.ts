@@ -2,7 +2,7 @@
 
 import { insert, list } from "@/lib/db";
 import { getMember, normalizeMobile } from "@/lib/auth";
-import { ROOMS } from "@/lib/content";
+import { ROOMS, TIME_SLOTS } from "@/lib/content";
 
 export type FormState = { ok?: boolean; message?: string; errors?: Record<string, string>; values?: Record<string, string> };
 
@@ -50,7 +50,7 @@ export async function requestBooking(_: FormState, f: FormData): Promise<FormSta
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) errors.date = "Please choose a date.";
   else if (date < todayPH()) errors.date = "Please choose today or a later date.";
   else if (isClosedDay(date)) errors.date = "We’re closed on Mondays. Please pick another day (or message us for special occasions).";
-  if (!time) errors.time = "Please choose a time.";
+  if (!(TIME_SLOTS as readonly string[]).includes(time)) errors.time = "Please choose a time.";
   if (!guests || guests < 1) errors.guests = "How many guests?";
   else if (r && guests > r.max) errors.guests = `${r.short} fits up to ${r.max} guests.`;
   if (name.length < 2) errors.name = "Please enter your name.";
