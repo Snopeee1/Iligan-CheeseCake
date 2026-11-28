@@ -7,8 +7,9 @@ import { d } from "@/components/fx";
 import { getMember } from "@/lib/auth";
 import { list } from "@/lib/db";
 import { peso, ROOMS } from "@/lib/content";
+import { HowItWorks } from "@/components/HowItWorks";
 
-export const metadata: Metadata = { title: "VIP Rooms & Events", description: "Private VIP Rooms for 8–30 guests and exclusive bookings for 50–60 at Iligan Cheesecake House. No room fee when you reach the consumable within 4 hours." };
+export const metadata: Metadata = { title: "VIP Rooms & Events", description: "Private VIP Rooms for 8–30 guests and exclusive bookings for 50–60 at Iligan Cheesecake House. There’s no room fee — your group just spends the room’s amount on food and drinks within 4 hours." };
 
 export default function EventsPage() {
   return (
@@ -30,9 +31,16 @@ export default function EventsPage() {
         </div>
       </PageHero>
 
+      <section className="sec !pb-0">
+        <div className="wrap">
+          <SectionHead eyebrow="How booking works" title={<>Book a room in <em>4 easy steps</em></>} lead="No room fee. Your group simply spends the room’s amount on food and drinks." />
+          <HowItWorks initial="room" title={false} />
+        </div>
+      </section>
+
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="Our spaces" title={<>Choose your <em>room</em></>} lead="The consumable amount goes to your food. Reach it within the first 4 hours and the room is yours at no extra charge; each extra hour is ₱1,500." />
+          <SectionHead eyebrow="Our spaces" title={<>Choose your <em>room</em></>} lead="Each room has an amount your group spends on food and drinks. Spend it within the first 4 hours and the room is free. Staying longer? Each extra hour is ₱1,500." />
           <div className="grid gap-7">
             {ROOMS.map((r, i) => (
               <article id={r.id} key={r.id} data-reveal={i % 2 ? "right" : "left"} style={d(60)} className={`group lift grid scroll-mt-32 overflow-hidden rounded-3xl border border-line bg-white shadow-[var(--shadow-soft)] lg:grid-cols-2 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
@@ -45,12 +53,12 @@ export default function EventsPage() {
                     <span className="chip"><Icon name="users" size={16} />{r.capacity}</span>
                     {r.id === "exclusive" ? (
                       <>
-                        <span className="chip"><Icon name="tag" size={16} />₱50,000 consumable</span>
+                        <span className="chip"><Icon name="tag" size={16} />₱50,000 food &amp; drinks</span>
                         <span className="chip !border-gold !bg-gold/15"><Icon name="sparkle" size={16} />Promo ₱40,000–45,000</span>
                       </>
                     ) : (
                       <>
-                        <span className="chip"><Icon name="tag" size={16} />{peso(r.consumable)} consumable</span>
+                        <span className="chip"><Icon name="tag" size={16} />{peso(r.consumable)} food &amp; drinks</span>
                         <span className="chip !border-espresso !bg-espresso !text-gold-light"><Icon name="card" size={16} />Black Card {peso(r.member!)}</span>
                         <span className="chip"><Icon name="clock" size={16} />4 hrs · ₱1,500 per extra hour</span>
                       </>

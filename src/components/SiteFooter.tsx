@@ -17,7 +17,7 @@ export function SiteFooter() {
               is so Cheesy!
             </p>
             <Link href="/contact#inquire" className="btn btn-gold">
-              Order / Inquire <Icon name="arrow" />
+              Order or Ask Us <Icon name="arrow" />
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-8 border-b border-gold/20 py-12 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:gap-12">
@@ -36,7 +36,7 @@ export function SiteFooter() {
                 ))}
               </div>
             </div>
-            <FootCol title="Explore" items={[["Menu", "/menu"], ["Black Card", "/black-card"], ["VIP Rooms", "/events"], ["Exclusive bookings", "/events#exclusive"], ["Quick links", "/card"]]} />
+            <FootCol title="Explore" items={[["Menu", "/menu"], ["Black Card", "/black-card"], ["VIP Rooms", "/events"], ["Book the whole place", "/events#exclusive"], ["Quick links", "/card"]]} />
             <FootCol title="Visit" items={[["Bauhina St. cor. Champaca St.", LINKS.maps], ["San Miguel Village, Pala-o", LINKS.maps], ["Tue–Sun · 11:30am–9:30pm", "/contact"], ["Closed Mondays", "/contact"]]} />
             <FootCol title="Contact" items={[["(063) 302 3635", LINKS.phone], ["Messenger", LINKS.messenger], ["iligancheesecakehouse@gmail.com", LINKS.email], ["Member sign in", "/account"]]} />
           </div>
@@ -48,7 +48,7 @@ export function SiteFooter() {
       </footer>
       <div className="fixed inset-x-0 bottom-0 z-30 flex gap-2.5 border-t border-gold/30 bg-espresso/95 px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom,0px))] md:hidden">
         <Link href="/contact#inquire" className="btn btn-berry flex-1 !py-3.5">
-          Order / Inquire
+          Order or Ask Us
         </Link>
         <a href={LINKS.messenger} target="_blank" rel="noopener noreferrer" className="btn btn-outline w-[52px] !p-0" aria-label="Message us on Messenger">
           <Icon name="chat" />

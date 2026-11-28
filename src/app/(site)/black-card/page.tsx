@@ -11,9 +11,9 @@ export const metadata: Metadata = { title: "Black Card", description: "The ICH B
 
 const FAQ: [string, string][] = [
   ["How much is the Black Card?", "₱2,200, valid for 1 year from the date you register. Pay by cash, card or bank transfer."],
-  ["Is the fee consumable?", "Yes — ₱1,200 comes back to you as 3 vouchers of ₱400. You can use one voucher per dine-in visit, and you choose when to use it. Your PIN is asked before each use."],
+  ["Does part of the ₱2,200 come back to me?", "Yes — ₱1,200 comes back to you as 3 vouchers of ₱400. You can use one voucher per dine-in visit, and you choose when to use it. Your PIN is asked before each use."],
   ["What do I get every visit?", "A free Hot or Cold Americano or Fruitea (Passion, Green Apple or Lychee), 10% off the regular menu for you and up to 4 companions, and 25% off the Chef VIP Special Menu. There’s no minimum spend."],
-  ["Do members get lower VIP Room rates?", "Yes — ₱2,000 less consumable on every VIP Room: Family ₱6,000, Corporate ₱10,000, Seminar ₱18,000."],
+  ["Do members get lower VIP Room rates?", "Yes — every VIP Room costs you ₱2,000 less to book: Family ₱6,000, Corporate ₱10,000, Seminar ₱18,000 (spent on food and drinks)."],
   ["What about my birthday?", "You get one free slice of cheesecake, any flavour, during your birthday month."],
   ["Is the Black Card the same as the 5–10% offer?", "No. The 5–10% discount on selected items is our calling-card offer for returning dine-in guests. Black Card members get their own member discounts."],
   ["Is there a physical card?", "We’re starting with a digital card on your phone — sign in with your mobile number and PIN and show your QR at the counter. A physical card may come later."],

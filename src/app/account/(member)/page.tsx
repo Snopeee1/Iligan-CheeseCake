@@ -176,7 +176,7 @@ async function DashboardInner() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {(
               [
-                ["/account/book", "home", "Book a VIP Room", "₱2,000 less consumable"],
+                ["/account/book", "home", "Book a VIP Room", "₱2,000 less to spend"],
                 ["/menu", "book", "Chef VIP Menu", "See member prices"],
                 ["/account/card", "qr", "Show my QR", "At the counter"],
                 ["/account/profile", "user", "Profile & PIN", "Keep it safe"],
@@ -284,7 +284,7 @@ async function DashboardInner() {
                 [
                   ["tag", "Member discounts", "25% Chef VIP Menu · 10% regular, you + 4"],
                   ["coffee", "Free every visit", "Americano or Fruitea · no minimum spend"],
-                  ["home", "VIP Rooms", "₱2,000 less consumable"],
+                  ["home", "VIP Rooms", "₱2,000 less to spend"],
                   ["gift", "Birthday month", "A free slice of cheesecake"],
                   ["clock", "No-waiting service", "We bring your order to you"],
                 ] as [IconName, string, string][]

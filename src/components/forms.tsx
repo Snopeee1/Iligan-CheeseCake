@@ -64,7 +64,7 @@ function InquiryInner({ defaultTopic, source, onReset }: { defaultTopic: string;
   if (state.ok) return <div className="p-6 md:p-8"><Success message={state.message} onReset={onReset} /></div>;
   const v = state.values ?? {};
   const e = state.errors ?? {};
-  const topics = ["Order", "Reserve a table", "VIP Room", "Exclusive booking", "Packages", "Black Card"];
+  const topics = ["Order", "Reserve a table", "VIP Room", "Book the whole place", "Packages", "Black Card"];
   return (
     <form action={action} className="relative grid gap-4 p-6 md:grid-cols-2 md:p-8" noValidate>
       <Honeypot />
@@ -98,7 +98,7 @@ function InquiryInner({ defaultTopic, source, onReset }: { defaultTopic: string;
       <div className="flex flex-col items-stretch justify-between gap-4 md:col-span-2 md:flex-row md:items-center">
         <small className="text-xs text-muted">We’ll get back to you on Messenger or by phone. Your details are only used to reply to you.</small>
         <button className="btn btn-berry" disabled={pending}>
-          {pending ? "Sending…" : "Send inquiry"} <Icon name="send" />
+          {pending ? "Sending…" : "Send message"} <Icon name="send" />
         </button>
       </div>
     </form>
@@ -211,7 +211,7 @@ function BookingInner({ member, initialRoom, busy, onReset }: { member?: { name:
         <Row k="Time" v={time ? fmtTime(time) : "Pick a time"} />
         <Row k="Guests" v={guests || "—"} />
         {r.id === "exclusive" ? (
-          <Row k="Consumable" v={<span>₱50,000 · promo ₱40–45k</span>} />
+          <Row k="Food & drinks" v={<span>₱50,000 · promo ₱40–45k</span>} />
         ) : (
           <>
             <Row k="Consumable" v={member ? <s className="opacity-60">{peso(r.consumable)}</s> : peso(r.consumable)} />
@@ -222,7 +222,7 @@ function BookingInner({ member, initialRoom, busy, onReset }: { member?: { name:
         <button className="btn btn-gold mt-2" disabled={pending || monday}>
           {pending ? "Sending…" : "Send booking request"} <Icon name="arrow" />
         </button>
-        <p className="text-xs text-cream/60">Not yet confirmed — our team will message you. Extra hours ₱1,500 each. Consumable covers food.</p>
+        <p className="text-xs text-cream/60">Not yet confirmed — our team will message you. Extra hours ₱1,500 each. The amount is spent on food and drinks.</p>
       </aside>
     </form>
   );

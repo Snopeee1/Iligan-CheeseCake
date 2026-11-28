@@ -13,6 +13,7 @@ import { biz, LINKS, peso, ROOMS } from "@/lib/content";
 import { getLiveItems } from "@/lib/menu";
 import { RestaurantJsonLd } from "@/components/RestaurantJsonLd";
 import { FairyLights, IvyGarland } from "@/components/decor";
+import { HowItWorks } from "@/components/HowItWorks";
 
 export default function Home() {
   return (
@@ -27,6 +28,11 @@ export default function Home() {
           </Suspense>
         </Tilt>
       </div>
+      <section className="sec !pb-0" id="how-it-works">
+        <div className="wrap">
+          <HowItWorks />
+        </div>
+      </section>
       <Suspense fallback={<div className="wrap sec"><div className="skeleton h-[640px]" /></div>}>
         <MenuPreview />
       </Suspense>
@@ -447,9 +453,9 @@ function Venues() {
                 ))}
               </div>
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <span className="note">◆ Consumable on food, first 4 hours · ₱1,500 per extra hour · Black Card: ₱2,000 less</span>
+                <span className="note">◆ No room fee: the amount is spent on food &amp; drinks (first 4 hours) · ₱1,500 per extra hour · Black Card: ₱2,000 less</span>
                 <Link className="btn btn-gold" href="/events">
-                  Inquire <Icon name="arrow" />
+                  Ask us <Icon name="arrow" />
                 </Link>
               </div>
             </div>
@@ -459,15 +465,15 @@ function Venues() {
               <article data-reveal="right" className="group relative h-full min-h-[380px] overflow-hidden rounded-3xl text-cream shadow-[var(--shadow-deep)] lg:min-h-[430px]">
                 <Photo name="interior-dining-hall-01" alt="Main dining hall" sizes="(max-width:1024px) 100vw, 520px" className="zoom-img !absolute inset-0" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,22,15,.1)_20%,rgba(36,22,15,.92))]" />
-                <span className="pill absolute top-5 left-5">◆ Exclusive booking</span>
+                <span className="pill absolute top-5 left-5">◆ Book the whole place</span>
                 <div className="absolute inset-x-7 bottom-7 grid gap-2.5">
                   <div className="eyebrow !text-gold-light">50–60 guests</div>
                   <h3 className="h3">Main Dining + Seminar Room</h3>
-                  <p className="text-[15px] opacity-85">Book the whole house for bigger parties and corporate events. ₱50,000 consumable — now on promo at ₱40,000–45,000.</p>
+                  <p className="text-[15px] opacity-85">Book the whole house for bigger parties and corporate events. ₱50,000 to spend on food and drinks — now on promo at ₱40,000–45,000.</p>
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="note">◆ Promo rate</span>
                     <Link className="btn btn-gold" href="/events#exclusive">
-                      Inquire <Icon name="arrow" />
+                      Ask us <Icon name="arrow" />
                     </Link>
                   </div>
                 </div>
@@ -549,7 +555,7 @@ function Packages() {
             </div>
             <div>
               <Link className="btn btn-gold" href="/contact#inquire">
-                Inquire Now <Icon name="arrow" />
+                Ask us now <Icon name="arrow" />
               </Link>
             </div>
           </div>

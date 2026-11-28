@@ -85,7 +85,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <Link href="/contact#inquire" className="btn btn-gold pulse-ring hidden !px-5 !py-3 sm:inline-flex">
               <Icon name="chat" />
-              Order / Inquire
+              Order or Ask Us
             </Link>
             <button type="button" onClick={() => setOpen(true)} className="grid size-[42px] place-items-center rounded-xl border border-gold/40 text-gold-light lg:hidden" aria-label="Open menu" aria-expanded={open}>
               <Icon name="menu" />
@@ -105,7 +105,7 @@ export function SiteHeader() {
               </button>
             </div>
             <nav className="grid gap-1 text-lg font-semibold">
-              {[{ href: "/", label: "Home" }, ...NAV, { href: "/card", label: "Quick links" }].map((n, i) => (
+              {[{ href: "/", label: "Home" }, { href: "/#how-it-works", label: "How it works" }, ...NAV, { href: "/card", label: "Quick links" }].map((n, i) => (
                 <Link key={n.href} href={n.href} style={{ animationDelay: `${80 + i * 50}ms` }} className="fade-up flex items-center justify-between rounded-xl px-3 py-3 font-serif text-2xl hover:bg-white/5">
                   {n.label}
                   <Icon name="chevron" size={18} className="text-gold" />
@@ -114,7 +114,7 @@ export function SiteHeader() {
             </nav>
             <div className="mt-auto grid gap-3">
               <Link href="/contact#inquire" className="btn btn-gold">
-                Order / Inquire
+                Order or Ask Us
               </Link>
               <Link href="/account" className="btn btn-outline">
                 <Icon name="card" />

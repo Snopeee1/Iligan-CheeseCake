@@ -70,7 +70,7 @@ export const ROOMS = [
   { id: "family", name: "The Family Room", short: "Family Room", label: "VIP Room 1", capacity: "Good for 8 · max 10", min: 1, max: 10, consumable: 8000, member: 6000, image: "vip-room-family-01", use: "A warm and private space ideal for intimate celebrations, birthdays, reunions and meaningful moments shared with loved ones." },
   { id: "corporate", name: "The Corporate Room", short: "Corporate Room", label: "VIP Room 2", capacity: "Good for 12 · max 16", min: 1, max: 16, consumable: 12000, member: 10000, image: "vip-room-corporate-01", use: "A refined and professional setting for business meetings, presentations, strategy sessions and executive dining." },
   { id: "seminar", name: "The Seminar Room", short: "Seminar Room", label: "VIP Room 3", capacity: "26–30 guests", min: 1, max: 30, consumable: 20000, member: 18000, image: null, use: "A spacious, well-appointed room for team trainings, workshops, orientations and small seminars." },
-  { id: "exclusive", name: "Main Dining + Seminar Room", short: "Exclusive booking", label: "Exclusive", capacity: "50–60 guests", min: 1, max: 60, consumable: 50000, member: null, promo: "₱40,000–45,000", image: "interior-dining-hall-01", use: "Book the whole house for bigger parties and corporate events. ₱50,000 consumable — now on promo." },
+  { id: "exclusive", name: "Main Dining + Seminar Room", short: "Whole place", label: "Whole place", capacity: "50–60 guests", min: 1, max: 60, consumable: 50000, member: null, promo: "₱40,000–45,000", image: "interior-dining-hall-01", use: "Book the whole house for bigger parties and corporate events. ₱50,000 to spend on food and drinks — now on promo." },
 ] as const;
 export type RoomId = (typeof ROOMS)[number]["id"];
 

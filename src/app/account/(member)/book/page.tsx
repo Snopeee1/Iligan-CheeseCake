@@ -18,7 +18,7 @@ export default function BookPage() {
         <h1 className="mt-2 font-serif text-[38px] leading-[42px] font-medium md:text-5xl md:leading-[52px]">
           Book a room <em className="text-berry">at member rate</em>
         </h1>
-        <p className="mt-1 text-muted">Black Card members get ₱2,000 less consumable on every VIP Room.</p>
+        <p className="mt-1 text-muted">Black Card members get ₱2,000 less to spend on every VIP Room.</p>
       </div>
       <Suspense fallback={<div className="skeleton h-[640px]" />}>
         <Inner />
