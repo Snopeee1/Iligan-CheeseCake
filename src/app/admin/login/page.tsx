@@ -25,11 +25,11 @@ export default function AdminLogin() {
       {/* Brand side */}
       <section className="glow-dark spotlight relative hidden overflow-hidden lg:block">
         <Photo name="interior-dining-hall-01" alt="" sizes="60vw" eager className="kenburns !absolute inset-0 opacity-35" />
-        <FairyLights drape className="absolute inset-x-0 top-0 z-[1] opacity-90" swags={5} />
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(13,11,10,.96)_25%,rgba(36,22,15,.65)_60%,rgba(143,58,34,.35))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(36,22,15,.94)_25%,rgba(36,22,15,.65)_60%,rgba(143,58,34,.35))]" />
         <span className="blob top-[-140px] right-[-80px] size-[480px] bg-gold/30" />
         <span className="blob bottom-[-160px] left-[-120px] size-[440px] bg-sage/50" style={{ animationDelay: "-6s" }} />
         <Dust />
+        <FairyLights drape className="absolute inset-x-0 top-0 z-[1] opacity-90" swags={5} />
 
         <div className="relative flex h-full flex-col justify-between p-12 xl:p-16">
           <div className="flex items-center justify-between">

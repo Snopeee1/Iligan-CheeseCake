@@ -23,10 +23,10 @@ export default function MemberLogin({ searchParams }: { searchParams: Promise<{ 
   return (
     <main className="grid min-h-dvh bg-cream lg:grid-cols-[1.2fr_1fr]">
       <section className="glow-dark spotlight relative overflow-hidden">
-        <FairyLights drape className="absolute inset-x-0 top-0 z-[1] opacity-90" swags={5} />
         <span className="blob top-[-140px] right-[-80px] size-[480px] bg-gold/30" />
         <span className="blob bottom-[-160px] left-[-120px] size-[440px] bg-sage/50" style={{ animationDelay: "-6s" }} />
         <Dust />
+        <FairyLights drape className="absolute inset-x-0 top-0 z-[1] opacity-90" swags={5} />
         <div className="relative flex h-full flex-col gap-8 p-6 pb-10 sm:p-10 lg:justify-between lg:p-14">
           <div className="flex items-center justify-between">
             <Logo href="/" />
